@@ -18,6 +18,4 @@ abstract public class BaseWeapon {
     //region Class Constructors
 
     //endregion
-
-    public
 }

@@ -2,6 +2,8 @@ package Services.LoggingService;
 
 import Services.LoggingService.Enums.ErrorLevelEnum;
 import Services.LoggingService.Enums.InfoLevelEnum;
+import com.sun.jdi.Value;
+
 import static Services.UIServices.ConsoleFormater.*;
 
 import java.util.Arrays;
@@ -17,10 +19,20 @@ public class ConsoleLogger implements ILogger{
     }
 
     @Override
+    public void LoggInfo(InfoLevelEnum infoLevelEnum, int message) {
+        LoggInfo(infoLevelEnum, String.valueOf(message));
+    }
+
+    @Override
     public void LoggError(ErrorLevelEnum level, String message) {
         SetErrorColorCode(level);
         PrintError(level, message);
         ResetColorCode();
+    }
+
+    @Override
+    public void LoggError(ErrorLevelEnum errorLevelEnum, int message) {
+        LoggError(errorLevelEnum, String.valueOf(message));
     }
 
     @Override

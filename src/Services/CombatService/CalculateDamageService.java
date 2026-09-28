@@ -11,7 +11,7 @@ public class CalculateDamageService {
     private static Random rand = new Random();
     private static ILogger logger = new ConsoleLogger();
     
-    private static int RollDamage(Damage damage) {
+    public static int RollDamage(Damage damage) {
         int total = 0;
 
         for (int i = 0; i < damage.GetDamageAmount(); i++) {

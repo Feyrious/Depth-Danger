@@ -1,22 +1,53 @@
 package Models.Combat.Damage;
 
 public class Damage {
-    private DamageTypeEnum _type;
-    private int _value;
+    //region Class Properties
+    private DamageTypeEnum _damageType;
+    private int _damageSize;
+    private int _damageAmount;
+    private int _staticDamage;
 
-    public void SetValue(int Value) {
-        this._value = Value;
+    public void SetStaticDamage(int staticDamage) {
+        this._staticDamage = staticDamage;
     }
 
-    public int GetValue() {
-        return this._value;
+    public int GetStaticDamage() {
+        return this._staticDamage;
+    }
+
+    public void SetDamageAmount(int damageAmount) {
+        this._damageAmount = damageAmount;
+    }
+
+    public int GetDamageAmount() {
+        return this._damageAmount;
+    }
+
+    public void SetDamageSize(int damageSize) {
+        this._damageSize = damageSize;
+    }
+
+    public int GetDamageSize() {
+        return this._damageSize;
     }
 
     public void SetDamageType(DamageTypeEnum damageType) {
-        this._type = damageType;
+        this._damageType = damageType;
     }
 
     public DamageTypeEnum GetDamageType() {
-        return this._type;
+        return this._damageType;
     }
+    //endregion
+
+    //region Class Constructors
+    public Damage(int damageAmount, int damageSize, int staticDamage, DamageTypeEnum damageType) {
+        this._damageAmount = damageAmount;
+        this._damageSize = damageSize;
+        this._damageType = damageType;
+        this._staticDamage = staticDamage;
+    }
+    //endregion
+
+
 }

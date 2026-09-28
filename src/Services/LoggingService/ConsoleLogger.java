@@ -1,7 +1,8 @@
-package LoggingService;
+package Services.LoggingService;
 
 import Services.LoggingService.Enums.ErrorLevelEnum;
 import Services.LoggingService.Enums.InfoLevelEnum;
+import static Services.UIServices.ConsoleFormater.*;
 
 import java.util.Arrays;
 

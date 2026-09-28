@@ -1,4 +1,4 @@
-package UIServices;
+package Services.UIServices;
 
 public class ConsoleFormater {
     public static final String COLOR_RESET = "\u001B[0m";

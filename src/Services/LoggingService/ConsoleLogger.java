@@ -1,6 +1,6 @@
-package LoggingService;
+package Services.LoggingService;
 
-import static UIServices.ConsoleFormater.*;
+import static Services.UIServices.ConsoleFormater.*;
 
 public class ConsoleLogger implements ILogger{
     @Override

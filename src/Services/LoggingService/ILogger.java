@@ -1,4 +1,4 @@
-package LoggingService;
+package Services.LoggingService;
 
 
 public interface ILogger {

@@ -1,5 +1,5 @@
-import LoggingService.ConsoleLogger;
-import LoggingService.LogLevel;
+import Services.LoggingService.ConsoleLogger;
+import Services.LoggingService.LogLevel;
 
 void main() {
     var logger = new ConsoleLogger();

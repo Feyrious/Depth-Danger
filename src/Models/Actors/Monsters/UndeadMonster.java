@@ -1,4 +1,4 @@
-package Models.Monsters;
+package Models.Actors.Monsters;
 
-public class UndeadMonster extends BaseMonster{
+public class UndeadMonster extends BaseMonster {
 }

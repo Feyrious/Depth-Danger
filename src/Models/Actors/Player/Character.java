@@ -1,6 +1,6 @@
-package Models.Player;
+package Models.Actors.Player;
 
-import Models.Entity;
+import Models.Actors.Entity;
 
 public class Character extends Entity {
 }

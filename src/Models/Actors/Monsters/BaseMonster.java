@@ -1,6 +1,6 @@
-package Models.Monsters;
+package Models.Actors.Monsters;
 
-import Models.Entity;
+import Models.Actors.Entity;
 
 public class BaseMonster extends Entity {
 }

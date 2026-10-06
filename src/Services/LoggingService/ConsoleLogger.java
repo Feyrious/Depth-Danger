@@ -2,11 +2,6 @@ package Services.LoggingService;
 
 import Services.LoggingService.Enums.ErrorLevelEnum;
 import Services.LoggingService.Enums.InfoLevelEnum;
-import com.sun.jdi.Value;
-
-import static Services.UIServices.ConsoleFormater.*;
-
-import java.util.Arrays;
 
 import static Services.UIServices.ConsoleFormater.*;
 
@@ -15,10 +10,18 @@ public class ConsoleLogger implements ILogger{
     public void LoggInfo(InfoLevelEnum level, String message) {
         boolean isDebug = java.lang.management.ManagementFactory.getRuntimeMXBean().getInputArguments().toString().contains("jdwp");
 
-        if (level == InfoLevelEnum.DEBUG && isDebug)
-        SetInfoColorCode(level);
-        PrintLog(level, message);
-        ResetColorCode();
+        if (level == InfoLevelEnum.DEBUG) {
+            if (isDebug) {
+                SetInfoColorCode(level);
+                PrintLog(level, message);
+                ResetColorCode();
+            }
+        } else {
+            SetInfoColorCode(level);
+            PrintLog(level, message);
+            ResetColorCode();
+        }
+
     }
 
     @Override

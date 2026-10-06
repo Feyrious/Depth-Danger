@@ -7,10 +7,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="Depth and Danger" scope="TEST" />
+    <orderEntry type="module" module-name="Depth-Danger" scope="TEST" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit5">
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/junit-platform-console-standalone-1.12.0.jar!/" />
           <root url="file://$MODULE_DIR$/lib" />
         </CLASSES>
         <JAVADOC />

@@ -25,8 +25,27 @@ public class CalculateDamageServiceTest {
     }
 
     @Test
-    @DisplayName("RollDamage should return damage within expected range for 1 die plus static damage")
+    @DisplayName("RollDamage should return damage within expected range for one die plus static damage")
     void RollDamage_SingleDieWithStaticDamage_ReturnsDamageWithinRange() {
+        // Arrange
+        int damageAmount = 1;
+        int damageSize = 6;
+        int staticDamage = 3;
+
+        // Act
+        for (int i = 0; i < 10; i++) {
+            Damage damage = new Damage(damageAmount, damageSize, staticDamage, DamageTypeEnum.Physical);
+            int totalDamage = CalculateDamageService.RollDamage(damage);
+
+            // Assert
+            assertTrue(totalDamage >= 4 && totalDamage <= 9,
+                    "Expected total damage to be within valid range, but got: " + totalDamage);
+        }
+    }
+
+    @Test
+    @DisplayName("RollDamage should return damage within expected range for several dies plus static damage")
+    void RollDamage_MultipleDiesWithStaticDamage_ReturnsDamageWithinRange() {
         // Arrange
         int damageAmount = 6;
         int damageSize = 6;

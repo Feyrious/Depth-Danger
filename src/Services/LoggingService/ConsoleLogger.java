@@ -2,10 +2,11 @@ package Services.LoggingService;
 
 import Services.LoggingService.Enums.ErrorLevelEnum;
 import Services.LoggingService.Enums.InfoLevelEnum;
+import Services.LoggingService.Interfaces.ILogger;
 
 import static Services.UIServices.ConsoleFormater.*;
 
-public class ConsoleLogger implements ILogger{
+public class ConsoleLogger implements ILogger {
     @Override
     public void LoggInfo(InfoLevelEnum level, String message) {
         boolean isDebug = java.lang.management.ManagementFactory.getRuntimeMXBean().getInputArguments().toString().contains("jdwp");

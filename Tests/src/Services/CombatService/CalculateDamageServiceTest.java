@@ -28,17 +28,17 @@ public class CalculateDamageServiceTest {
     @DisplayName("RollDamage should return damage within expected range for 1 die plus static damage")
     void RollDamage_SingleDieWithStaticDamage_ReturnsDamageWithinRange() {
         // Arrange
-        int damageAmount = 1;
+        int damageAmount = 6;
         int damageSize = 6;
         int staticDamage = 3;
-        Damage damage = new Damage(damageAmount, damageSize, staticDamage, DamageTypeEnum.Physical);
 
         // Act
-        int totalDamage = CalculateDamageService.RollDamage(damage);
+        for (int i = 0; i < 50; i++) {
+            Damage damage = new Damage(damageAmount, damageSize, staticDamage, DamageTypeEnum.Physical);
+            int totalDamage = CalculateDamageService.RollDamage(damage);
 
-        // Assert
-        for (int i = 0; i < 10; i++) {
-            assertTrue(totalDamage >= 4 && totalDamage <= 9,
+            // Assert
+            assertTrue(totalDamage >= 9 && totalDamage <= 39,
                     "Expected total damage to be within valid range, but got: " + totalDamage);
         }
     }

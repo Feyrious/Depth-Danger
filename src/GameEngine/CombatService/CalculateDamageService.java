@@ -1,9 +1,9 @@
-package Services.CombatService;
+package GameEngine.CombatService;
 
 import Models.Combat.Damage.Damage;
 import Services.LoggingService.ConsoleLogger;
 import Services.LoggingService.Enums.InfoLevelEnum;
-import Services.LoggingService.ILogger;
+import Services.LoggingService.Interfaces.ILogger;
 
 import java.util.Random;
 

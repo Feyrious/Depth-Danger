@@ -13,6 +13,9 @@ import static Services.UIServices.ConsoleFormater.*;
 public class ConsoleLogger implements ILogger{
     @Override
     public void LoggInfo(InfoLevelEnum level, String message) {
+        boolean isDebug = java.lang.management.ManagementFactory.getRuntimeMXBean().getInputArguments().toString().contains("jdwp");
+
+        if (level == InfoLevelEnum.DEBUG && isDebug)
         SetInfoColorCode(level);
         PrintLog(level, message);
         ResetColorCode();

@@ -37,8 +37,10 @@ public class CalculateDamageServiceTest {
         int totalDamage = CalculateDamageService.RollDamage(damage);
 
         // Assert
-        assertTrue(totalDamage >= 4 && totalDamage <= 9,
-                "Expected total damage to be within valid range, but got: " + totalDamage);
+        for (int i = 0; i < 10; i++) {
+            assertTrue(totalDamage >= 4 && totalDamage <= 9,
+                    "Expected total damage to be within valid range, but got: " + totalDamage);
+        }
     }
     //endregion
 }

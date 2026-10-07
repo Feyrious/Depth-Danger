@@ -18,7 +18,7 @@ public class NavigationMapTest {
         GameBoard game = new GameBoard(levelOne);
 
         // Act & Assert
-        assertDoesNotThrow(() -> NavigationMap.RenderMap(game));
+        assertDoesNotThrow(() -> NavigationMap.RenderMap(game, null, null));
     }
     //endregion
 }

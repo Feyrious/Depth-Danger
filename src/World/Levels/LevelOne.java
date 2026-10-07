@@ -25,12 +25,12 @@ public class LevelOne implements ILevel {
 
     @Override
     public int getLevelHeight() {
-        return 7-1;
+        return 7;
     }
 
     @Override
     public int getLevelWidth() {
-        return 11-1;
+        return 11;
     }
     //endregion
 

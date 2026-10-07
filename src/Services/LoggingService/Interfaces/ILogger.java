@@ -1,4 +1,4 @@
-package Services.LoggingService;
+package Services.LoggingService.Interfaces;
 
 
 import Services.LoggingService.Enums.ErrorLevelEnum;
@@ -8,17 +8,19 @@ public interface ILogger {
 
     /**
      * Logs a simple message to the Console
-     * @param level The level of the information being logged
+     * @param infoLevelEnum The level of the information being logged
      * @param message The message itself being logged
      */
-    public void LoggInfo(InfoLevelEnum level, String message);
+    public void LoggInfo(InfoLevelEnum infoLevelEnum, String message);
+    public void LoggInfo(InfoLevelEnum infoLevelEnum, int message);
 
     /**
      * Logs a simple message to the Console
-     * @param level The level of the error being logged
+     * @param errorLevelEnum The level of the error being logged
      * @param message The error message itself being logged
      */
-    public void LoggError(ErrorLevelEnum level, String message);
+    public void LoggError(ErrorLevelEnum errorLevelEnum, String message);
+    public void LoggError(ErrorLevelEnum errorLevelEnum, int message);
 
     /**
      * Logs a simple message to the Console

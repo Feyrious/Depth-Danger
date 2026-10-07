@@ -1,4 +1,4 @@
-package Services.LoggingService;
+package Services.LoggingService.Enums;
 
 public enum LogLevel {
     INFO,

@@ -2,18 +2,32 @@ package Services.LoggingService;
 
 import Services.LoggingService.Enums.ErrorLevelEnum;
 import Services.LoggingService.Enums.InfoLevelEnum;
-import static Services.UIServices.ConsoleFormater.*;
-
-import java.util.Arrays;
+import Services.LoggingService.Interfaces.ILogger;
 
 import static Services.UIServices.ConsoleFormater.*;
 
-public class ConsoleLogger implements ILogger{
+public class ConsoleLogger implements ILogger {
     @Override
     public void LoggInfo(InfoLevelEnum level, String message) {
-        SetInfoColorCode(level);
-        PrintLog(level, message);
-        ResetColorCode();
+        boolean isDebug = java.lang.management.ManagementFactory.getRuntimeMXBean().getInputArguments().toString().contains("jdwp");
+
+        if (level == InfoLevelEnum.DEBUG) {
+            if (isDebug) {
+                SetInfoColorCode(level);
+                PrintLog(level, message);
+                ResetColorCode();
+            }
+        } else {
+            SetInfoColorCode(level);
+            PrintLog(level, message);
+            ResetColorCode();
+        }
+
+    }
+
+    @Override
+    public void LoggInfo(InfoLevelEnum infoLevelEnum, int message) {
+        LoggInfo(infoLevelEnum, String.valueOf(message));
     }
 
     @Override
@@ -21,6 +35,11 @@ public class ConsoleLogger implements ILogger{
         SetErrorColorCode(level);
         PrintError(level, message);
         ResetColorCode();
+    }
+
+    @Override
+    public void LoggError(ErrorLevelEnum errorLevelEnum, int message) {
+        LoggError(errorLevelEnum, String.valueOf(message));
     }
 
     @Override

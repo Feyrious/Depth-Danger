@@ -1,19 +1,26 @@
 package World.Levels;
 
+import Models.Actors.Monsters.BaseMonster;
 import World.Interfaces.ILevel;
 import World.Tile;
+
+import java.util.ArrayList;
 
 public class LevelOne implements ILevel {
 
     //region Fields
     private static final String[] VISUAL_LEVEL_LAYOUT = {
-            "███████████",
-            "█  ⌼█    ≡█",
-            "█   █     █",
-            "██⌸████⌸███",
-            "█   ⌸     █",
-            "█   █    ⌼█",
-            "███████████"
+            "█████████████████████████████████████████",
+            "█       ⌼█                █           ≡ █",
+            "█        █                █             █",
+            "█        ⌸                █             █",
+            "█        █                █             █",
+            "█████⌸██████████⌸█████████████⌸██████████",
+            "█          █          █                 █",
+            "█          █          █                 █",
+            "█          █          ⌸                 █",
+            "█          █          █                ⌼█",
+            "█████████████████████████████████████████"
     };
 
     private Tile[][] _levelGrid;
@@ -25,12 +32,17 @@ public class LevelOne implements ILevel {
 
     @Override
     public int getLevelHeight() {
-        return 7;
+        return 11;
     }
 
     @Override
     public int getLevelWidth() {
-        return 11;
+        return 41;
+    }
+
+    @Override
+    public ArrayList<BaseMonster> GetLevelMonsters() {
+        return new ArrayList<BaseMonster>();
     }
     //endregion
 

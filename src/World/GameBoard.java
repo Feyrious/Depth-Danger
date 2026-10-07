@@ -56,6 +56,7 @@ public class GameBoard {
         this.SetHeight(level.getLevelHeight());
         this.SetWidth(level.getLevelWidth());
         this.SetTiles(level.getLevelTiles());
+        this.SetMonsters(level.GetLevelMonsters());
     }
 
     public boolean IsWalkable(int x, int y) {

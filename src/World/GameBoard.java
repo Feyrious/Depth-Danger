@@ -16,7 +16,6 @@ public class GameBoard {
     private Tile[][] _grid;
     private int _width;
     private int _height;
-    private Character player;
     private ArrayList<BaseMonster> _monsters;
 
     public void SetMonsters(ArrayList<BaseMonster> monsters) {
@@ -25,14 +24,6 @@ public class GameBoard {
 
     public ArrayList<BaseMonster> GetMonsters() {
         return this._monsters;
-    }
-
-    public void SetCharacter(Character character) {
-        this.player = character;
-    }
-
-    public Character GetCharacter() {
-        return this.player;
     }
 
     public void SetHeight(int height) {
@@ -76,7 +67,6 @@ public class GameBoard {
             _logger.LoggError(ErrorLevelEnum.ERROR, e.getMessage());
             throw e;
         }
-
 
         if (x < 1 || x >= this._width-1 || y < 1 || y >= this._height-1)
             return false; // Hit an outer wall

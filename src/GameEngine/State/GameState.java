@@ -1,9 +1,27 @@
 package GameEngine.State;
 
+import GameEngine.UIRenderer.Legend;
+import GameEngine.UIRenderer.NavigationMap;
+import GameEngine.UIRenderer.StatMenu;
+import Models.Actors.Player.Character;
+import Services.TerminalService.TerminalHelper;
 import World.GameBoard;
+import World.Interfaces.ILevel;
+
+import java.io.IOException;
+import java.util.Scanner;
 
 public class GameState {
     private GameBoard _board;
+    private Character _player;
+
+    public void SetPlayer(Character player) {
+        this._player = player;
+    }
+
+    public Character GetPlayer() {
+        return this._player;
+    }
 
     public void SetBoard(GameBoard board) {
         this._board = board;

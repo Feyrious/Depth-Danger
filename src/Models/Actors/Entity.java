@@ -6,6 +6,16 @@ public class Entity {
 
     protected int _currentHitPoints;
     protected int _maxHitPoints;
+    protected int _currentX;
+    protected int _currentY;
+
+    public int GetCurrentX() {
+        return this._currentX;
+    }
+
+    public int GetCurrentY() {
+        return this._currentY;
+    }
 
     public int GetHitPoints() {
         return this._currentHitPoints;
@@ -23,5 +33,21 @@ public class Entity {
 
         if (this._currentHitPoints < 0)
             this._currentHitPoints = 0;
+    }
+
+    public void MoveUp() {
+        this._currentY--;
+    }
+
+    public void MoveDown() {
+        this._currentY++;
+    }
+
+    public void MoveLeft() {
+        this._currentX--;
+    }
+
+    public void MoveRight() {
+        this._currentX++;
     }
 }

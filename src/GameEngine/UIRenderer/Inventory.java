@@ -1,4 +1,4 @@
 package GameEngine.UIRenderer;
 
-public class Map {
+public class Inventory {
 }

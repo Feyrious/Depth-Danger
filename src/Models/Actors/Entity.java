@@ -1,16 +1,27 @@
 package Models.Actors;
 
 public class Entity {
-    private int _hitPoints;
 
-    public void SetHitPoints(int damage) {
-        this._hitPoints = this._hitPoints - damage;
+    //region Properties
 
-        if (this._hitPoints < 0)
-            this._hitPoints = 0;
-    }
+    protected int _currentHitPoints;
+    protected int _maxHitPoints;
 
     public int GetHitPoints() {
-        return this._hitPoints;
+        return this._currentHitPoints;
+    }
+    //endregion
+
+
+    public Entity(int currentHitPoints, int maxHitPoints, int level) {
+        this._currentHitPoints = currentHitPoints;
+        this._maxHitPoints = maxHitPoints;
+    }
+
+    public void TakeDamage(int damage) {
+        this._currentHitPoints -= damage;
+
+        if (this._currentHitPoints < 0)
+            this._currentHitPoints = 0;
     }
 }

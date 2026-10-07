@@ -1,9 +1,14 @@
 package World.Enums;
 
 public enum TileTypeEnum {
+    // Passive Tiles
     Wall,
     Floor,
     Stairs,
     Chest,
-    Door
+    Door,
+    // Character
+    Character,
+    //Monsters
+    Goblin
 }

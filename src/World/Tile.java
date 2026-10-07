@@ -13,9 +13,14 @@ public class Tile {
                 return '≡';
             case Door:
                 return '⌸';
+            case Floor:
+                return ' ';
             case Chest:
                 return '⌼';
-            case Floor:
+            case Character:
+                return '☺';
+            case Goblin:
+                return 'ô';
             default:
                 return ' ';
         }
@@ -52,6 +57,15 @@ public class Tile {
                 this.SetTileType(TileTypeEnum.Chest);
                 break;
             case ' ':
+                this.SetTileType(TileTypeEnum.Floor);
+                break;
+            case '☺':
+                this.SetTileType(TileTypeEnum.Character);
+                break;
+            case 'ô':
+                this.SetTileType(TileTypeEnum.Goblin);
+                break;
+            default:
                 this.SetTileType(TileTypeEnum.Floor);
                 break;
         }

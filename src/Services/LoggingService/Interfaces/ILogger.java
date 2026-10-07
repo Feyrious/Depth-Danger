@@ -1,4 +1,4 @@
-package Services.LoggingService;
+package Services.LoggingService.Interfaces;
 
 
 import Services.LoggingService.Enums.ErrorLevelEnum;

@@ -1,10 +1,10 @@
 package GameEngine.UIRenderer;
 
 public class Legend {
-    public static void PrintLegend() {
-        System.out.println("█: Wall,       W: Up");
-        System.out.println("⌸: Door,       A: Left");
-        System.out.println("⌼: Chest,      S: Down");
-        System.out.println("≡: Stairs,     D: Right");
+    public static void RenderLegend() {
+        System.out.println("╭───────────────────────────────────────╮");
+        System.out.println("│ W: Up   A: Left   S: Down   D: Right  │");
+        System.out.println("│ █: Wall  ⌸: Door  ⌼: Chest  ≡: Stairs │");
+        System.out.println("╰───────────────────────────────────────╯");
     }
 }

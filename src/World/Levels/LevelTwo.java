@@ -20,6 +20,11 @@ public class LevelTwo extends BaseLevel {
     }
 
     @Override
+    public int GetLevelNumber() {
+        return 2;
+    }
+
+    @Override
     public void SetPlayerStartPosition(Character player) {
 
     }

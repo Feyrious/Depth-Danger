@@ -7,6 +7,7 @@ import World.Tile;
 import java.util.ArrayList;
 
 public interface ILevel {
+    int GetLevelNumber();
     String[] _levelLayout = new String[0];
     Tile[][] GetLevelTiles();
     int getLevelHeight();

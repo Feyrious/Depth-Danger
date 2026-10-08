@@ -36,6 +36,11 @@ public class LevelOne extends BaseLevel {
     }
 
     @Override
+    public int GetLevelNumber() {
+        return 1;
+    }
+
+    @Override
     public void SetPlayerStartPosition(Character player) {
         player.SetStartPosition(3, 9);
     }

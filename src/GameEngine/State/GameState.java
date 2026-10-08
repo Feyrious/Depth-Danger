@@ -35,6 +35,7 @@ public class GameState {
     private boolean running = true;
 
     public GameState(ILevel level) {
+        ConsoleLogger.LogGameMessage("Level " + level.GetLevelNumber() + "!");
         this._board = new GameBoard(level);
         var playerCharacter = new Character(20, 20);
         level.SetPlayerStartPosition(playerCharacter);

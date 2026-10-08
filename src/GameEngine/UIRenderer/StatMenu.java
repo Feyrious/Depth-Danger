@@ -1,5 +1,6 @@
 package GameEngine.UIRenderer;
 import Models.Actors.Player.Character;
+import Services.LoggingService.ConsoleLogger;
 
 public class StatMenu {
 
@@ -11,6 +12,8 @@ public class StatMenu {
 
         System.out.println("╭───────────────────────────────────────╮");
         System.out.println("│ " + message + " │");
+        if (ConsoleLogger._inDebugMode)
+            System.out.println("│ Player Current Position - X: " + String.format("%02d", character.GetCurrentX()) + " Y: " + String.format("%02d", character.GetCurrentY()) + " │");
         System.out.println("╰───────────────────────────────────────╯");
     }
 }

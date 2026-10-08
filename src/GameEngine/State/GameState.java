@@ -1,16 +1,14 @@
 package GameEngine.State;
 
 import GameEngine.Movement.MovementService;
-import GameEngine.UIRenderer.Legend;
-import GameEngine.UIRenderer.NavigationMap;
-import GameEngine.UIRenderer.StatMenu;
+import GameEngine.UIRenderer.*;
 import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Player.Character;
+import Services.LoggingService.ConsoleLogger;
 import Services.TerminalService.TerminalHelper;
 import World.GameBoard;
 import World.Interfaces.ILevel;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class GameState {
@@ -37,6 +35,7 @@ public class GameState {
     private boolean running = true;
 
     public GameState(ILevel level) {
+        ConsoleLogger.LogGameMessage("Level " + level.GetLevelNumber() + "!");
         this._board = new GameBoard(level);
         var playerCharacter = new Character(20, 20);
         level.SetPlayerStartPosition(playerCharacter);
@@ -106,7 +105,9 @@ public class GameState {
 
         StatMenu.RenderStats(character);
         NavigationMap.RenderMap(_board, character, _board.GetMonsters());
+        GameMessages.RenderMessages();
         Legend.RenderLegend();
+        Logger.RenderLogs();
 
         System.out.flush();
     }

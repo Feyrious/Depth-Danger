@@ -2,17 +2,26 @@ package Services.LoggingService;
 
 import Services.LoggingService.Enums.ErrorLevelEnum;
 import Services.LoggingService.Enums.InfoLevelEnum;
-import Services.LoggingService.Interfaces.ILogger;
+
+import java.util.ArrayList;
 
 import static Services.UIServices.ConsoleFormater.*;
 
-public class ConsoleLogger implements ILogger {
-    @Override
-    public void LoggInfo(InfoLevelEnum level, String message) {
-        boolean isDebug = java.lang.management.ManagementFactory.getRuntimeMXBean().getInputArguments().toString().contains("jdwp");
+public class ConsoleLogger {
 
+    public static boolean _inDebugMode = java.lang.management.ManagementFactory.getRuntimeMXBean().getInputArguments().toString().contains("jdwp");
+
+    public static ArrayList<String> _messageBuffer = new ArrayList<>();
+
+    public static ArrayList<String> _gameMessageBuffer = new ArrayList<>();
+
+    public static void LogGameMessage(String message) {
+        _gameMessageBuffer.add(message);
+    }
+
+    public static void LogInfo(InfoLevelEnum level, String message) {
         if (level == InfoLevelEnum.DEBUG) {
-            if (isDebug) {
+            if (_inDebugMode) {
                 SetInfoColorCode(level);
                 PrintLog(level, message);
                 ResetColorCode();
@@ -25,80 +34,76 @@ public class ConsoleLogger implements ILogger {
 
     }
 
-    @Override
-    public void LoggInfo(InfoLevelEnum infoLevelEnum, int message) {
-        LoggInfo(infoLevelEnum, String.valueOf(message));
+    public static void LogInfo(InfoLevelEnum infoLevelEnum, int message) {
+        LogInfo(infoLevelEnum, String.valueOf(message));
     }
 
-    @Override
-    public void LoggError(ErrorLevelEnum level, String message) {
+    public static void LogError(ErrorLevelEnum level, String message) {
         SetErrorColorCode(level);
         PrintError(level, message);
         ResetColorCode();
     }
 
-    @Override
-    public void LoggError(ErrorLevelEnum errorLevelEnum, int message) {
-        LoggError(errorLevelEnum, String.valueOf(message));
+    public static void LogError(ErrorLevelEnum errorLevelEnum, int message) {
+        LogError(errorLevelEnum, String.valueOf(message));
     }
 
-    @Override
-    public void LoggCritical(String customMessage, Exception ex) {
+    public static void LogCritical(String customMessage, Exception ex) {
         SetCriticalColorCode();
         PrintException(customMessage, ex);
         ResetColorCode();
     }
 
-    private void SetInfoColorCode(InfoLevelEnum level)  {
+    private static void SetInfoColorCode(InfoLevelEnum level)  {
         switch (level) {
             case INFO:
-                System.out.print(COLOR_CYAN);
+                _messageBuffer.add(COLOR_CYAN);
                 break;
             case DEBUG:
-                System.out.print(COLOR_GREEN);
+                _messageBuffer.add(COLOR_GREEN);
                 break;
         }
     }
 
-    private void SetErrorColorCode(ErrorLevelEnum level)  {
+    private static void SetErrorColorCode(ErrorLevelEnum level)  {
         switch (level) {
             case WARNING:
-                System.out.print(COLOR_YELLOW);
+                _messageBuffer.add(COLOR_YELLOW);
                 break;
             case ERROR:
                 break;
         }
     }
 
-    private void SetCriticalColorCode()  {
-        System.out.print(COLOR_RED);
+    private static void SetCriticalColorCode()  {
+        _messageBuffer.add(COLOR_RED);
     }
 
-    private void PrintLog(InfoLevelEnum level, String message) {
-        System.out.println("-----------------");
-        System.out.println(level.name() + ": " + message);
-        System.out.println("-----------------");
+    private static void PrintLog(InfoLevelEnum level, String message) {
+        _messageBuffer.add("----------------------------------");
+        _messageBuffer.add(level.name() + ": " + message);
+        _messageBuffer.add("----------------------------------");
     }
 
-    private void PrintError(ErrorLevelEnum level, String message) {
-        System.out.println("-----------------");
-        System.out.println(level.name() + ": " + message);
-        System.out.println("-----------------");
+    private static void PrintError(ErrorLevelEnum level, String message) {
+        _messageBuffer.add("----------------------------------");
+        _messageBuffer.add(level.name() + ": " + message);
+        _messageBuffer.add("----------------------------------");
     }
 
-    private void PrintException(String customMessage, Exception ex) {
-        System.out.println("-----------------");
-        System.out.println("EXCEPTION: " + customMessage);
+    private static void PrintException(String customMessage, Exception ex) {
+        _messageBuffer.add("----------------------------------");
+        _messageBuffer.add("EXCEPTION: " + customMessage);
         if (ex.getMessage() != null) {
-            System.out.println(ex.getMessage());
+            _messageBuffer.add(ex.getMessage());
         }
         for (StackTraceElement line : ex.getStackTrace()) {
-            System.out.println(line.toString());
+            _messageBuffer.add(line.toString());
         }
-        System.out.println("-----------------");
+        _messageBuffer.add("----------------------------------");
     }
 
-    private void ResetColorCode() {
-        System.out.println(COLOR_RESET);
+    private static void ResetColorCode() {
+        _messageBuffer.add(COLOR_RESET);
     }
 }

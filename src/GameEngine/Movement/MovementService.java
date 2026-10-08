@@ -7,6 +7,8 @@ import GameEngine.Movement.Patterns.SearchMovementPattern;
 import Models.Actors.Interfaces.IMovable;
 import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Monsters.Enums.MonsterMovementTypeEnum;
+import Services.LoggingService.ConsoleLogger;
+import Services.LoggingService.Enums.InfoLevelEnum;
 import World.GameBoard;
 
 import java.util.EnumMap;
@@ -47,24 +49,36 @@ public class MovementService {
             case '↑':
                 if (board.IsWalkable(currentX, currentY - 1)) {
                     movable.MoveUp();
+                    ConsoleLogger.LogGameMessage("You moved up.");
+                } else {
+                    ConsoleLogger.LogGameMessage("You can't move there.");
                 }
                 return true;
             case 's':
             case '↓':
                 if (board.IsWalkable(currentX, currentY + 1)) {
                     movable.MoveDown();
+                    ConsoleLogger.LogGameMessage("You moved down.");
+                } else {
+                    ConsoleLogger.LogGameMessage("You can't move there.");
                 }
                 return true;
             case 'a':
             case '←':
                 if (board.IsWalkable(currentX - 1, currentY)) {
                     movable.MoveLeft();
+                    ConsoleLogger.LogGameMessage("You moved left.");
+                } else {
+                    ConsoleLogger.LogGameMessage("You can't move there.");
                 }
                 return true;
             case 'd':
             case '→':
                 if (board.IsWalkable(currentX + 1, currentY)) {
                     movable.MoveRight();
+                    ConsoleLogger.LogGameMessage("You moved right.");
+                } else {
+                    ConsoleLogger.LogGameMessage("You can't move there.");
                 }
                 return true;
             default:

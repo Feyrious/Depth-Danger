@@ -104,6 +104,7 @@ public class GameState {
 
         StatMenu.RenderStats(character);
         NavigationMap.RenderMap(_board, character, _board.GetMonsters());
+        GameMessages.RenderMessages();
         Legend.RenderLegend();
         Logger.RenderLogs();
 

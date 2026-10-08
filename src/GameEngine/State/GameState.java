@@ -105,6 +105,7 @@ public class GameState {
         StatMenu.RenderStats(character);
         NavigationMap.RenderMap(_board, character, _board.GetMonsters());
         Legend.RenderLegend();
+        Logger.RenderLogs();
 
         System.out.flush();
     }

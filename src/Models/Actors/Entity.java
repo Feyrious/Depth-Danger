@@ -1,6 +1,8 @@
 package Models.Actors;
 
-public class Entity {
+import Models.Actors.Interfaces.IMovable;
+
+public class Entity implements IMovable {
 
     //region Properties
 
@@ -9,10 +11,12 @@ public class Entity {
     protected int _currentX;
     protected int _currentY;
 
+    @Override
     public int GetCurrentX() {
         return this._currentX;
     }
 
+    @Override
     public int GetCurrentY() {
         return this._currentY;
     }
@@ -23,7 +27,7 @@ public class Entity {
     //endregion
 
 
-    public Entity(int currentHitPoints, int maxHitPoints, int level) {
+    public Entity(int currentHitPoints, int maxHitPoints) {
         this._currentHitPoints = currentHitPoints;
         this._maxHitPoints = maxHitPoints;
     }
@@ -35,18 +39,27 @@ public class Entity {
             this._currentHitPoints = 0;
     }
 
+    public void SetStartPosition(int x, int y) {
+        this._currentX = x;
+        this._currentY = y;
+    }
+
+    @Override
     public void MoveUp() {
         this._currentY--;
     }
 
+    @Override
     public void MoveDown() {
         this._currentY++;
     }
 
+    @Override
     public void MoveLeft() {
         this._currentX--;
     }
 
+    @Override
     public void MoveRight() {
         this._currentX++;
     }

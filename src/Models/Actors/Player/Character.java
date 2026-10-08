@@ -23,9 +23,10 @@ public class Character extends Entity {
     }
 
     public Character(int currentHitPoints, int maxHitPoints) {
-        super(currentHitPoints, maxHitPoints, 1);
+        super(currentHitPoints, maxHitPoints);
         this._currentX = 2;
         this._currentY = 2;
+        this._level = 1;
     }
 
     public int GetCurrentHealth() {

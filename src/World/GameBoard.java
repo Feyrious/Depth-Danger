@@ -5,7 +5,6 @@ import Services.LoggingService.ConsoleLogger;
 import Services.LoggingService.Enums.ErrorLevelEnum;
 import World.Enums.TileTypeEnum;
 import World.Interfaces.ILevel;
-import Models.Actors.Player.Character;
 
 import java.util.ArrayList;
 
@@ -14,8 +13,6 @@ public class GameBoard {
     //region Private Fields
     private ConsoleLogger _logger;
     private Tile[][] _grid;
-    private int _width;
-    private int _height;
     private ArrayList<BaseMonster> _monsters;
 
     public void SetMonsters(ArrayList<BaseMonster> monsters) {
@@ -24,22 +21,6 @@ public class GameBoard {
 
     public ArrayList<BaseMonster> GetMonsters() {
         return this._monsters;
-    }
-
-    public void SetHeight(int height) {
-        this._height = height;
-    }
-
-    public int GetHeight() {
-        return this._height;
-    }
-
-    public void SetWidth(int width) {
-        this._width = width;
-    }
-
-    public int GetWidth() {
-        return this._width;
     }
 
     private void SetTiles(Tile[][] tiles) {
@@ -53,15 +34,13 @@ public class GameBoard {
 
     public GameBoard(ILevel level) {
         _logger = new ConsoleLogger();
-        this.SetHeight(level.getLevelHeight());
-        this.SetWidth(level.getLevelWidth());
-        this.SetTiles(level.getLevelTiles());
+        this.SetTiles(level.GetLevelTiles());
         this.SetMonsters(level.GetLevelMonsters());
     }
 
     public boolean IsWalkable(int x, int y) {
         try {
-            if (x < 0 || x >= this._width || y < 0 || y >= this._height) {
+            if (x < 0 || x >= this.GetWidth() || y < 0 || y >= this.GetHeight()) {
                 throw new IndexOutOfBoundsException("Coordinates out of bounds");
             }
         }catch (IndexOutOfBoundsException e) {
@@ -69,9 +48,17 @@ public class GameBoard {
             throw e;
         }
 
-        if (x < 1 || x >= this._width-1 || y < 1 || y >= this._height-1)
+        if (x < 1 || x >= this.GetWidth()-1 || y < 1 || y >= this.GetHeight()-1)
             return false; // Hit an outer wall
 
         return this.GetTile(x, y).GetTileType() != TileTypeEnum.Wall;
+    }
+
+    public int GetHeight() {
+        return this._grid.length;
+    }
+
+    public int GetWidth() {
+        return this._grid[0].length;
     }
 }

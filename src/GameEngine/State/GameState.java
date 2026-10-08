@@ -1,16 +1,14 @@
 package GameEngine.State;
 
 import GameEngine.Movement.MovementService;
-import GameEngine.UIRenderer.Legend;
-import GameEngine.UIRenderer.NavigationMap;
-import GameEngine.UIRenderer.StatMenu;
+import GameEngine.UIRenderer.*;
 import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Player.Character;
+import Services.LoggingService.ConsoleLogger;
 import Services.TerminalService.TerminalHelper;
 import World.GameBoard;
 import World.Interfaces.ILevel;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class GameState {

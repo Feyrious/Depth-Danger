@@ -1,5 +1,6 @@
 package GameEngine.UIRenderer;
 import Models.Actors.Player.Character;
+import Services.LoggingService.ConsoleLogger;
 
 public class StatMenu {
 

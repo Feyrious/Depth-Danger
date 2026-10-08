@@ -7,6 +7,8 @@ import GameEngine.Movement.Patterns.SearchMovementPattern;
 import Models.Actors.Interfaces.IMovable;
 import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Monsters.Enums.MonsterMovementTypeEnum;
+import Services.LoggingService.ConsoleLogger;
+import Services.LoggingService.Enums.InfoLevelEnum;
 import World.GameBoard;
 
 import java.util.EnumMap;

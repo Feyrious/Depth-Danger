@@ -44,7 +44,7 @@ public class GameBoard {
                 throw new IndexOutOfBoundsException("Coordinates out of bounds");
             }
         }catch (IndexOutOfBoundsException e) {
-            _logger.LoggError(ErrorLevelEnum.ERROR, e.getMessage());
+            _logger.LogError(ErrorLevelEnum.ERROR, e.getMessage());
             throw e;
         }
 

@@ -1,63 +1,64 @@
 package World.Levels;
 
 import Models.Actors.Monsters.BaseMonster;
+import Models.Actors.Monsters.Enums.MonsterMovementTypeEnum;
+import Models.Actors.Monsters.Humanoids.Goblin;
+import Models.Actors.Player.Character;
 import World.Interfaces.ILevel;
 import World.Tile;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
-public class LevelOne implements ILevel {
+public class LevelOne extends BaseLevel {
 
-    //region Fields
-    private static final String[] VISUAL_LEVEL_LAYOUT = {
-            "█████████████████████████████████████████",
-            "█       ⌼█                █           ≡ █",
-            "█        █                █             █",
-            "█        ⌸                █             █",
-            "█        █                █             █",
-            "█████⌸██████████⌸█████████████⌸██████████",
-            "█          █          █                 █",
-            "█          █          █                 █",
-            "█          █          ⌸                 █",
-            "█          █          █                ⌼█",
-            "█████████████████████████████████████████"
-    };
-
-    private Tile[][] _levelGrid;
-
-    @Override
-    public Tile[][] getLevelTiles() {
-        return this._levelGrid;
+    public LevelOne() {
+        this._levelLayout = this.SetLevelLayout();
+        this._levelGrid = new Tile[getLevelHeight()][getLevelWidth()];
+        this.InitMap();
     }
 
     @Override
-    public int getLevelHeight() {
-        return 11;
+    protected String[] SetLevelLayout() {
+        return new String[] {
+                "█████████████████████████████████████████",
+                "█      ⌼ █                █           ≡ █",
+                "█        █                █             █",
+                "█        ⌸                █             █",
+                "█        █                █             █",
+                "█████⌸██████████⌸█████████████⌸██████████",
+                "█          █          █                 █",
+                "█          █          █                 █",
+                "█          █          ⌸                 █",
+                "█          █          █               ⌼ █",
+                "█████████████████████████████████████████"
+        };
     }
 
     @Override
-    public int getLevelWidth() {
-        return 41;
+    public void SetPlayerStartPosition(Character player) {
+        player.SetStartPosition(3, 9);
     }
 
     @Override
     public ArrayList<BaseMonster> GetLevelMonsters() {
-        return new ArrayList<BaseMonster>();
-    }
-    //endregion
+        var monsters = new ArrayList<BaseMonster>();
 
-    public LevelOne() {
-        this._levelGrid = new Tile[getLevelHeight()][getLevelWidth()];
-        InitMap();
-    }
+        var monster1 = new Goblin();
+        monster1.SetStartPosition(2, 2);
+        monster1.SetMovementPattern(MonsterMovementTypeEnum.Search);
 
-    private void InitMap() {
-        for (int y = 0; y < getLevelHeight(); y++) {
-            String row = VISUAL_LEVEL_LAYOUT[y];
-            for (int x = 0; x < getLevelWidth(); x++) {
-                char c = row.charAt(x);
-                _levelGrid[y][x] = new Tile(c);
-            }
-        }
+        var monster2 = new Goblin();
+        monster2.SetStartPosition(15, 8);
+        monster2.SetMovementPattern(MonsterMovementTypeEnum.Random);
+
+        var monster3 = new Goblin();
+        monster3.SetStartPosition(25, 7);
+        monster3.SetMovementPattern(MonsterMovementTypeEnum.Patrol);
+
+        monsters.addAll(Arrays.asList(monster1, monster2, monster3));
+
+        return monsters;
     }
+    //endregio
 }

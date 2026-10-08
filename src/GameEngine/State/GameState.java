@@ -31,14 +31,8 @@ public class GameState {
         return this._board;
     }
 
-    private static final int TICKS_PER_SECOND = 20;
-    private static final long TIME_PER_TICK = 1000000000 / TICKS_PER_SECOND; // in nanoseconds
-
     // Game state
     private static boolean running = true;
-
-    // Movement direction input buffer
-    private static volatile char currentInput = ' ';
 
     public GameState(ILevel level) {
         this._board = new GameBoard(level);

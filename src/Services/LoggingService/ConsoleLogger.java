@@ -52,10 +52,10 @@ public class ConsoleLogger implements ILogger {
     private void SetInfoColorCode(InfoLevelEnum level)  {
         switch (level) {
             case INFO:
-                IO.print(COLOR_CYAN);
+                System.out.print(COLOR_CYAN);
                 break;
             case DEBUG:
-                IO.print(COLOR_GREEN);
+                System.out.print(COLOR_GREEN);
                 break;
         }
     }
@@ -63,41 +63,42 @@ public class ConsoleLogger implements ILogger {
     private void SetErrorColorCode(ErrorLevelEnum level)  {
         switch (level) {
             case WARNING:
-                IO.print(COLOR_YELLOW);
+                System.out.print(COLOR_YELLOW);
                 break;
             case ERROR:
+                break;
         }
     }
 
     private void SetCriticalColorCode()  {
-                IO.print(COLOR_RED);
+        System.out.print(COLOR_RED);
     }
 
     private void PrintLog(InfoLevelEnum level, String message) {
-        IO.println("-----------------");
-        IO.println(level.name() + ": " + message);
-        IO.println("-----------------");
+        System.out.println("-----------------");
+        System.out.println(level.name() + ": " + message);
+        System.out.println("-----------------");
     }
 
     private void PrintError(ErrorLevelEnum level, String message) {
-        IO.println("-----------------");
-        IO.println(level.name() + ": " + message);
-        IO.println("-----------------");
+        System.out.println("-----------------");
+        System.out.println(level.name() + ": " + message);
+        System.out.println("-----------------");
     }
 
     private void PrintException(String customMessage, Exception ex) {
-        IO.println("-----------------");
-        IO.println("EXCEPTION: " + customMessage);
+        System.out.println("-----------------");
+        System.out.println("EXCEPTION: " + customMessage);
         if (ex.getMessage() != null) {
-            IO.println(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
         for (StackTraceElement line : ex.getStackTrace()) {
-            IO.println(line.toString());
+            System.out.println(line.toString());
         }
-        IO.println("-----------------");
+        System.out.println("-----------------");
     }
 
     private void ResetColorCode() {
-        IO.println(COLOR_RESET);
+        System.out.println(COLOR_RESET);
     }
 }

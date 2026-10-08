@@ -1,8 +1,10 @@
 package GameEngine.State;
 
+import GameEngine.Movement.MovementService;
 import GameEngine.UIRenderer.Legend;
 import GameEngine.UIRenderer.NavigationMap;
 import GameEngine.UIRenderer.StatMenu;
+import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Player.Character;
 import Services.TerminalService.TerminalHelper;
 import World.GameBoard;
@@ -32,15 +34,17 @@ public class GameState {
     }
 
     // Game state
-    private static boolean running = true;
+    private boolean running = true;
 
     public GameState(ILevel level) {
         this._board = new GameBoard(level);
-        this.SetPlayer(new Character(20, 20));
+        var playerCharacter = new Character(20, 20);
+        level.SetPlayerStartPosition(playerCharacter);
+        this.SetPlayer(playerCharacter);
     }
 
     public void RunLevel() {
-       Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         // Initial render to draw the starting screen
         render();
@@ -70,41 +74,25 @@ public class GameState {
      * The Ticking System: Everything else in the world updates here.
      * (e.g., enemies move, hunger drops, or events process right after your move).
      */
-    private static void tick() {
-        // Example: Enemy.tick();
-        // Example: Environment.tick();
-
+    private void tick() {
+        if (_board != null && _board.GetMonsters() != null) {
+            for (BaseMonster monster : _board.GetMonsters()) {
+                MovementService.MoveMonster(monster, _board);
+            }
+        }
     }
 
     /**
      * Processes input. Returns true if a valid movement or turn action was taken.
      */
     private boolean processInput(char choice) {
-        var character = this.GetPlayer();
-
-        int currentX = character.GetCurrentX();
-        int currentY = character.GetCurrentY();
-
-        // Read keystrokes immediately (Supports WASD + Arrow Keys)
-        if (choice == 'w') {
-            if (_board.IsWalkable(currentX, currentY - 1))
-                character.MoveUp();
-        } else if (choice == 's') {
-            if (_board.IsWalkable(currentX, currentY + 1))
-                character.MoveDown();
-        } else if (choice == 'a') {
-            if (_board.IsWalkable(currentX - 1, currentY))
-                character.MoveLeft();
-        } else if (choice == 'd') {
-            if (_board.IsWalkable(currentX + 1, currentY))
-                character.MoveRight();
-        } else if (choice == 'q') {
+        if (choice == 'q' || choice == 'Q') {
             running = false;
-        } else {
             return false;
         }
 
-        return true;
+        var character = this.GetPlayer();
+        return MovementService.MovePlayer(character, _board, choice);
     }
 
     /**

@@ -9,8 +9,6 @@ import static Services.UIServices.ConsoleFormater.*;
 
 public class ConsoleLogger {
 
-    public static boolean _inDebugMode = java.lang.management.ManagementFactory.getRuntimeMXBean().getInputArguments().toString().contains("jdwp");
-
     public static ArrayList<String> _messageBuffer = new ArrayList<>();
 
     public static ArrayList<String> _gameMessageBuffer = new ArrayList<>();
@@ -21,7 +19,7 @@ public class ConsoleLogger {
 
     public static void LogInfo(InfoLevelEnum level, String message) {
         if (level == InfoLevelEnum.DEBUG) {
-            if (_inDebugMode) {
+            if (DebugService.IsInDebugMode()) {
                 SetInfoColorCode(level);
                 PrintLog(level, message);
                 ResetColorCode();

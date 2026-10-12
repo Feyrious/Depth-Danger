@@ -33,3 +33,13 @@ Minst två konkreta situationer i just ert program som kan gå fel och som ni be
 ## Motivering (fylls i senare i veckan)
 
 När ni kommit igång och gjort några ändringar: skriv kort varför strukturen ser ut som den gör, och om ni övervägde ett annat sätt att lösa det på. Detta behöver inte fyllas i redan i första commiten.
+
+# Köra programmet
+
+## Windows
+
+Se till så att du har en uppdaterad version av Java och att den pekar till rätt plats
+$env:Path = "C:\Program Files\Microsoft\jdk-25.0.2.10-hotspot" + $env:Path
+
+Sedan behöver man se till så att den använder UTF-8
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8

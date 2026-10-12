@@ -38,11 +38,15 @@ När ni kommit igång och gjort några ändringar: skriv kort varför strukturen
 
 ## Windows
 
-Se till så att du har en uppdaterad version av Java och att den pekar till rätt plats
+Se till så att du har en uppdaterad version av Java och att den pekar till rätt plats:
 $env:Path = "C:\Program Files\Microsoft\jdk-25.0.2.10-hotspot" + $env:Path
 
-Sedan behöver man se till så att den använder UTF-8
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+Använd sedan något av dessa kommandon från projekt-roten:
 
+### Maven-kommando
+Sedan behöver man köra följande kommandon för att först sätta rätt encoding, därefter körs programmet.
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; chcp 65001; & "C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.1\plugins\maven-plugin\lib\maven3\bin\mvn.cmd" compile exec:java "-Dexec.mainClass=Main"
+
+### Jar-applikation
 Sedan kör man programmet från projektroten genom följande kommando:
-& "C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.1\plugins\maven-plugin\lib\maven3\bin\mvn.cmd" compile exec:java "-Dexec.mainClass=Main"
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; chcp 65001; java -jar target/DepthDanger-1.0-SNAPSHOT.jar

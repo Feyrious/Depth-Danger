@@ -43,3 +43,6 @@ $env:Path = "C:\Program Files\Microsoft\jdk-25.0.2.10-hotspot" + $env:Path
 
 Sedan behöver man se till så att den använder UTF-8
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
+Sedan kör man programmet från projektroten genom följande kommando:
+& "C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.1\plugins\maven-plugin\lib\maven3\bin\mvn.cmd" compile exec:java "-Dexec.mainClass=Main"

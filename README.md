@@ -46,6 +46,8 @@ Använd sedan något av dessa kommandon från projekt-roten:
 ### Maven-kommando
 Sedan behöver man köra följande kommandon för att först sätta rätt encoding, därefter körs programmet.
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; chcp 65001; & "C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.1\plugins\maven-plugin\lib\maven3\bin\mvn.cmd" compile exec:java "-Dexec.mainClass=Main"
+För att skicka debug-flagga, använd istället:
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; chcp 65001; & "C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.1\plugins\maven-plugin\lib\maven3\bin\mvn.cmd" compile exec:java "-Dexec.mainClass=Main" "-Dexec.args=--debug"
 
 ### Jar-applikation
 Sedan kör man programmet från projektroten genom följande kommando:

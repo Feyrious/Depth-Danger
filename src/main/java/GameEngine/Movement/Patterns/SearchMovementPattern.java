@@ -5,7 +5,7 @@ import GameEngine.Movement.MovementDirection;
 import Models.Actors.Monsters.BaseMonster;
 import World.GameBoard;
 
-public class SearchMovementPattern implements IMonsterMovementStrategy {
+public class SearchMovementPattern extends BaseMovementPattern implements IMonsterMovementStrategy {
 
     @Override
     public void Move(BaseMonster monster, GameBoard board) {

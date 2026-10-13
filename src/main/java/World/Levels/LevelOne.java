@@ -4,7 +4,6 @@ import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Monsters.Enums.MonsterMovementTypeEnum;
 import Models.Actors.Monsters.Humanoids.Goblin;
 import Models.Actors.Player.Character;
-import World.Interfaces.ILevel;
 import World.Tile;
 
 import java.util.ArrayList;
@@ -14,30 +13,37 @@ public class LevelOne extends BaseLevel {
 
     public LevelOne() {
         this._levelLayout = this.SetLevelLayout();
-        this._levelGrid = new Tile[getLevelHeight()][getLevelWidth()];
+        this._levelGrid = new Tile[GetLevelHeight()][GetLevelWidth()];
         this.InitMap();
+        this.SetLevelExitLocation();
     }
 
     @Override
     protected String[] SetLevelLayout() {
         return new String[] {
-                "█████████████████████████████████████████",
-                "█      ⌼ █                █           ≡ █",
-                "█        █                █             █",
-                "█        ⌸                █             █",
-                "█        █                █             █",
-                "█████⌸██████████⌸█████████████⌸██████████",
-                "█          █          █                 █",
-                "█          █          █                 █",
-                "█          █          ⌸                 █",
-                "█          █          █               ⌼ █",
-                "█████████████████████████████████████████"
+                "██████████████████████████████████████████████████████████████",
+                "█      ⌼ █                █ ⌼    ⌼    ⌼ █     █            ≡ █",
+                "█        ⌸                █             █     ⌸              █",
+                "█        ██████████████   █             █     ████████████████",
+                "█        █                █             █     ⌸            ⌼ █",
+                "█████⌸██████████⌸█████████████⌸█████████████████████████⌸█████",
+                "█          █          █                 █            █       █",
+                "█          █          ███████████████   ⌸            █       █",
+                "█          █          ⌸                 █████⌸████████       █",
+                "█          █          █               ⌼ █                    █",
+                "██████████████████████████████████████████████████████████████"
         };
     }
 
     @Override
     public int GetLevelNumber() {
         return 1;
+    }
+
+    @Override
+    protected void SetLevelExitLocation() {
+        this._exitX = 59;
+        this._exitY = 1;
     }
 
     @Override

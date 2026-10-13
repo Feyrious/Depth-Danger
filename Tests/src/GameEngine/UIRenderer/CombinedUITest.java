@@ -17,7 +17,7 @@ public class CombinedUITest {
     @DisplayName("Render a complete scene with stats, map and legend for a player")
     void RenderMap_LevelOne_PrintsLevelToConsole() {
         // Arrange
-        Character player = new Character(20, 20);
+        Character player = new Character(1);
         player.LevelUp();
         player.LevelUp();
         player.LevelUp();

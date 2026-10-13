@@ -36,7 +36,8 @@ public class LevelSelector {
     private static ArrayList<ILevel> LevelList() {
         return new ArrayList<ILevel>(List.of(
                 new LevelOne(),
-                new LevelTwo()
+                new LevelTwo(),
+                new LevelThree()
             )
         );
     }

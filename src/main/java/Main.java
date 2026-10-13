@@ -1,25 +1,15 @@
-import GameEngine.State.GameState;
-import Services.LoggingService.ConsoleLogger;
+import GameEngine.State.GameOptions;
 import Services.LoggingService.DebugService;
 import Services.TerminalService.TerminalHelper;
 import Services.UIServices.Renderer.Logger;
 import Services.UIServices.Renderer.MainMenu;
-import World.Interfaces.ILevel;
-import World.Levels.LevelOne;
-import World.Levels.LevelSelector;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class Main {
-    // Set desired dimensions (in characters)
-    static int _cols = 70;
-    static int _rows = 22;
-
     public static void main(String[] args) {
         DebugService.CheckIfInDebugMode(args);
-        resizeConsole(_cols, _rows);
+        resizeConsole();
 
         char option;
 
@@ -32,10 +22,10 @@ public class Main {
 
             switch (option) {
                 case 's':
-                    StartNewGame(1);
+                    GameOptions.StartNewGame(1);
                     break;
                 case 'l':
-                    EnterLevelCode();
+                    GameOptions.EnterLevelCode();
                     break;
                 case 'o':
                     break;
@@ -46,59 +36,13 @@ public class Main {
 
     }
 
-    private static void EnterLevelCode() {
-        boolean isEnteringCode = true;
+    public static void resizeConsole() {
+        int cols = 70;
+        int rows = 24;
 
-        do {
-            MainMenu.RenderGameTitle();
-            MainMenu.RenderEnterLevelCode();
-            Logger.RenderLogs();
+        if (DebugService.IsInDebugMode())
+            rows += 7;
 
-            var value = TerminalHelper.readLine();
-
-            var levelNumber = LevelSelector.GetLevelNumberByCode(value);
-
-            if(levelNumber > 0) {
-                StartNewGame(levelNumber);
-                isEnteringCode = false;
-            } else {
-                MainMenu.RenderGameTitle();
-                MainMenu.RenderTryAgainLevelCode();
-                Logger.RenderLogs();
-
-                var answer = TerminalHelper.readKey();
-
-                switch (answer) {
-                    case 'n':
-                        isEnteringCode = false;
-                        break;
-                    case 'y':
-                    default:
-                        continue;
-                }
-            }
-
-        } while (isEnteringCode);
-
-    }
-
-
-    private static void StartNewGame(int levelNumber) {
-        boolean isPlaying = true;
-        
-        do {
-            var selectedLevel = LevelSelector.GetLevelByNumber(levelNumber);
-
-            var gameState = new GameState(selectedLevel);
-
-            isPlaying = gameState.RunLevel();
-
-            levelNumber++;
-
-        } while (isPlaying);
-    }
-
-    public static void resizeConsole(int cols, int rows) {
         // Step 1: Attempt the universal ANSI Escape Sequence
         // '\e[8;H;Wt' is the standard XTerm sequence for resizing text areas
         System.out.print(String.format("\033[8;%d;%dt", rows, cols));

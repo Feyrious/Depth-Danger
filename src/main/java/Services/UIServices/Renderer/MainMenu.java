@@ -44,10 +44,10 @@ public class MainMenu {
     }
 
     public static void RenderMenuOptions() {
-        System.out.println("                     " + nColor + "-=-" + reset + "    " + depthMain + "(S)tart Game" + reset + "    " + nColor + "-=-" + reset);
-        System.out.println("                     " + nColor + "-=-" + reset + "    " + depthShadow + "(L)oad Level" + reset + "    " + nColor + "-=-" + reset);
-        System.out.println("                     " + nColor + "-=-" + reset + "    " + nColor + "(O)ptions" + reset + "       " + nColor + "-=-" + reset);
-        System.out.println("                     " + nColor + "-=-" + reset + "    " + dangerMain + "(Q)uit" + reset + "          " + nColor + "-=-" + reset);
+        System.out.println("                     " + nColor + "-=-" + reset + "    " + depthMain + "[S]tart Game" + reset + "    " + nColor + "-=-" + reset);
+        System.out.println("                     " + nColor + "-=-" + reset + "    " + depthShadow + "[L]oad Level" + reset + "    " + nColor + "-=-" + reset);
+        System.out.println("                     " + nColor + "-=-" + reset + "    " + nColor + "[O]ptions" + reset + "       " + nColor + "-=-" + reset);
+        System.out.println("                     " + nColor + "-=-" + reset + "    " + dangerMain + "[Q]uit" + reset + "          " + nColor + "-=-" + reset);
     }
 
     public static void RenderEnterLevelCode() {

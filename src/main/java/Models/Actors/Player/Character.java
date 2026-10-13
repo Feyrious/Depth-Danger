@@ -22,11 +22,11 @@ public class Character extends Entity {
         return this._level;
     }
 
-    public Character(int currentHitPoints, int maxHitPoints) {
-        super(currentHitPoints, maxHitPoints);
+    public Character(int characterLevel) {
+        super(characterLevel * 5, characterLevel * 5);
         this._currentX = 2;
         this._currentY = 2;
-        this._level = 1;
+        this._level = characterLevel;
     }
 
     public int GetCurrentHealth() {
@@ -39,7 +39,6 @@ public class Character extends Entity {
 
     public void LevelUp() {
         this._level++;
-        super._maxHitPoints += 10;
-        super._currentHitPoints = super._maxHitPoints;
+        super._maxHitPoints += 5;
     }
 }

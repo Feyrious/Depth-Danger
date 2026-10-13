@@ -10,24 +10,25 @@ public class LevelTwo extends BaseLevel {
 
     public LevelTwo() {
         this._levelLayout = this.SetLevelLayout();
-        this._levelGrid = new Tile[getLevelHeight()][getLevelWidth()];
+        this._levelGrid = new Tile[GetLevelHeight()][GetLevelWidth()];
         this.InitMap();
+        this.SetLevelExitLocation();
     }
 
     @Override
     String[] SetLevelLayout() {
         return new String[] {
-                "█████████████████████████████████████████",
-                "█      ⌼ █                █           ≡ █",
-                "█        █                █             █",
-                "█        ⌸                █             █",
-                "█        █                █             █",
-                "█████⌸██████████⌸█████████████⌸██████████",
-                "█          █          █                 █",
-                "█          █          █                 █",
-                "█          █          ⌸                 █",
-                "█          █          █               ⌼ █",
-                "█████████████████████████████████████████"
+                "██████████████████████████████████████████████████████████████",
+                "█     █                       █                       █   ≡  █",
+                "█     █           █           █           █           █      █",
+                "█     █           █           █           █           █      █",
+                "█     █           █           █           █           █      █",
+                "█     █           █           █           █           █      █",
+                "█     █           █           █           █           █      █",
+                "█     █           █           █           █           █      █",
+                "█     █           █           █           █           █      █",
+                "█                 █                       █                  █",
+                "██████████████████████████████████████████████████████████████"
         };
     }
 
@@ -38,12 +39,18 @@ public class LevelTwo extends BaseLevel {
 
     @Override
     public String GetLevelCode() {
-        return "potions!";
+        return "Darkness";
     }
 
     @Override
     public void SetPlayerStartPosition(Character player) {
+        player.SetStartPosition(3,1);
+    }
 
+    @Override
+    protected void SetLevelExitLocation() {
+        this._exitX = 58;
+        this._exitY = 1;
     }
 
     @Override

@@ -78,27 +78,27 @@ public class ConsoleLogger {
     }
 
     private static void PrintLog(InfoLevelEnum level, String message) {
-        _messageBuffer.add("----------------------------------");
-        _messageBuffer.add(level.name() + ": " + message);
-        _messageBuffer.add("----------------------------------");
+        _messageBuffer.add("----------------------------------------------------------------------");
+        _messageBuffer.add("  " + level.name() + ": " + message);
+        _messageBuffer.add("----------------------------------------------------------------------");
     }
 
     private static void PrintError(ErrorLevelEnum level, String message) {
-        _messageBuffer.add("----------------------------------");
-        _messageBuffer.add(level.name() + ": " + message);
-        _messageBuffer.add("----------------------------------");
+        _messageBuffer.add("----------------------------------------------------------------------");
+        _messageBuffer.add("  " + level.name() + ": " + message);
+        _messageBuffer.add("----------------------------------------------------------------------");
     }
 
     private static void PrintException(String customMessage, Exception ex) {
-        _messageBuffer.add("----------------------------------");
-        _messageBuffer.add("EXCEPTION: " + customMessage);
+        _messageBuffer.add("----------------------------------------------------------------------");
+        _messageBuffer.add("  EXCEPTION: " + customMessage);
         if (ex.getMessage() != null) {
             _messageBuffer.add(ex.getMessage());
         }
         for (StackTraceElement line : ex.getStackTrace()) {
             _messageBuffer.add(line.toString());
         }
-        _messageBuffer.add("----------------------------------");
+        _messageBuffer.add("----------------------------------------------------------------------");
     }
 
     private static void ResetColorCode() {

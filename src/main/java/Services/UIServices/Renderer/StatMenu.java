@@ -12,8 +12,6 @@ public class StatMenu {
 
         System.out.println("   ╭──────────────────────────────────────────────────────────────╮");
         System.out.println("   │      " + message + "       │");
-        if (DebugService.IsInDebugMode())
-            System.out.println("   │ Player Current Position - X: " + String.format("%02d", character.GetCurrentX()) + " Y: " + String.format("%02d", character.GetCurrentY()) + " │");
         System.out.println("   ╰──────────────────────────────────────────────────────────────╯");
     }
 }

@@ -11,8 +11,9 @@ public interface ILevel {
     String GetLevelCode();
     String[] _levelLayout = new String[0];
     Tile[][] GetLevelTiles();
-    int getLevelHeight();
-    int getLevelWidth();
+    int GetLevelHeight();
+    int GetLevelWidth();
     void SetPlayerStartPosition(Character player);
+    boolean IsOnExitLocation(Character player);
     ArrayList<BaseMonster> GetLevelMonsters();
 }

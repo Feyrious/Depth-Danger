@@ -52,4 +52,42 @@ public class TerminalHelper {
             return ' ';
         }
     }
+
+    public static String readLine() {
+        StringBuilder inputBuffer = new StringBuilder();
+        try {
+            while (true) {
+                int key = reader.read();
+
+                if (key == 3) { // Ctrl+C
+                    System.out.println("\nExiting...");
+                    System.exit(0);
+                }
+
+                // Enter Key (\r or \n)
+                if (key == '\r' || key == '\n') {
+                    System.out.println();
+                    break;
+                }
+
+                // Backspace / Delete (ASCII 8 or 127)
+                if (key == 127 || key == 8) {
+                    if (inputBuffer.length() > 0) {
+                        inputBuffer.deleteCharAt(inputBuffer.length() - 1);
+                        System.out.print("\b \b"); // Erase last character on terminal
+                        System.out.flush();
+                    }
+                }
+                // Printable characters
+                else if (key >= 32 && key <= 126) {
+                    inputBuffer.append((char) key);
+                    System.out.print((char) key);
+                    System.out.flush();
+                }
+            }
+        } catch (IOException e) {
+            return "";
+        }
+        return inputBuffer.toString();
+    }
 }

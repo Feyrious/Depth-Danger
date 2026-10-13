@@ -95,7 +95,7 @@ public class MovementServiceTest {
     void MovePlayer_WASD_MovesPlayerCorrectly() {
         LevelOne level = new LevelOne();
         GameBoard board = new GameBoard(level);
-        Character character = new Character(20, 20); // starts at (2, 2)
+        Character character = new Character(4); // starts at (2, 2)
 
         // Right with 'd'
         assertTrue(MovementService.MovePlayer(character, board, 'd'));
@@ -123,7 +123,7 @@ public class MovementServiceTest {
     void MovePlayer_ArrowKeys_MovesPlayerCorrectly() {
         LevelOne level = new LevelOne();
         GameBoard board = new GameBoard(level);
-        Character character = new Character(20, 20); // starts at (2, 2)
+        Character character = new Character(3); // starts at (2, 2)
 
         // Right arrow '→'
         assertTrue(MovementService.MovePlayer(character, board, '→'));
@@ -151,7 +151,7 @@ public class MovementServiceTest {
     void MovePlayer_IntoWall_DoesNotChangePosition() {
         LevelOne level = new LevelOne();
         GameBoard board = new GameBoard(level);
-        Character character = new Character(20, 20); // starts at (2, 2)
+        Character character = new Character(2); // starts at (2, 2)
 
         // Move to (1, 2)
         MovementService.MovePlayer(character, board, 'a');
@@ -175,7 +175,7 @@ public class MovementServiceTest {
     void MovePlayer_InvalidInput_ReturnsFalse() {
         LevelOne level = new LevelOne();
         GameBoard board = new GameBoard(level);
-        Character character = new Character(20, 20);
+        Character character = new Character(1);
 
         boolean result = MovementService.MovePlayer(character, board, 'x');
 

@@ -13,7 +13,7 @@ public class StatMenuTest {
     @DisplayName("Rendered stats should have a nice box around it and show stats inside of it")
     void RenderStat_ForCharacter_ToConsole() {
         // Arrange
-        Character player = new Character(20, 20);
+        Character player = new Character(1);
         player.LevelUp();
         player.SetCoins(20);
 

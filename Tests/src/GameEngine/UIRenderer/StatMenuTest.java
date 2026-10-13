@@ -1,6 +1,7 @@
 package GameEngine.UIRenderer;
 
 import Models.Actors.Player.Character;
+import Services.UIServices.Renderer.StatMenu;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,7 @@ public class StatMenuTest {
     @DisplayName("Rendered stats should have a nice box around it and show stats inside of it")
     void RenderStat_ForCharacter_ToConsole() {
         // Arrange
-        Character player = new Character(20, 20);
+        Character player = new Character(1);
         player.LevelUp();
         player.SetCoins(20);
 

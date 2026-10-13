@@ -1,6 +1,9 @@
 package GameEngine.UIRenderer;
 
 import Models.Actors.Player.Character;
+import Services.UIServices.Renderer.Legend;
+import Services.UIServices.Renderer.NavigationMap;
+import Services.UIServices.Renderer.StatMenu;
 import World.GameBoard;
 import World.Levels.LevelOne;
 import org.junit.jupiter.api.DisplayName;
@@ -14,7 +17,7 @@ public class CombinedUITest {
     @DisplayName("Render a complete scene with stats, map and legend for a player")
     void RenderMap_LevelOne_PrintsLevelToConsole() {
         // Arrange
-        Character player = new Character(20, 20);
+        Character player = new Character(1);
         player.LevelUp();
         player.LevelUp();
         player.LevelUp();

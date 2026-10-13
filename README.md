@@ -2,29 +2,29 @@
 
 ## Projektidé
 
-Projektet är tänkt att efterlikna en simpel Dungeon Crawler där man spelar en karaktär som slåss mot monster, samlar saker och guld och får nya egenskaper.
+Projektet är tänkt att efterlikna en simpel Dungeon Crawler där man spelar en karaktär som slåss mot monster, samlar guld och ska gå djupare ner i nivåer.
 
 ## Superklass
 
-- Namn:
-- Gemensamma fält:
-- Gemensamma metoder:
+- Namn: Entity
+- Gemensamma fält: Max och Current HP är några fält som kan vara gemensamma för alla subklasser.
+- Gemensamma metoder: Metoder för att flytta en entitet är något som kan vara gemensamma för alla subklasser.
 
 ## Subklasser (minst tre)
 
-1. Namn — vad gör den annorlunda, vilka metoder overridas?
-2. Namn — vad gör den annorlunda, vilka metoder overridas?
-3. Namn — vad gör den annorlunda, vilka metoder overridas?
+1. Character — Det är spelarens karaktär och därav kan den även samla guld och gå upp i levels.
+2. BasMonster — Basmonster kommer att ha en simpel logik för hur de rör på sig.
+3. Humanoid och Undead — De har olika egenskaper för att slåss och patrullera
 
 ## Interface
 
-- Namn:
-- Metod(er):
-- Implementeras av (minst två subklasser):
+- Namn: ILevel
+- Metod(er): Har metoder där nivån lever, hur stor den är samt dess monster.
+- Implementeras av (minst två subklasser): LevelOne och LevelTwo är två olika nivåer som använder sig av ILevel som är en konkret implementering av ILevel.
 
 ## Meny
 
-Lista minst fyra åtgärder kopplade till samlingen (t.ex. lägga till, ta bort, söka, samt en egen åtgärd som passar er domän).
+Då det är ett spel så är fokus mer på att man ska kunna interagera med spelet och att man ska kunna slåss mot monster än en ren CRUD-funktion.
 
 ## Felscenarion
 
@@ -33,3 +33,32 @@ Minst två konkreta situationer i just ert program som kan gå fel och som ni be
 ## Motivering (fylls i senare i veckan)
 
 När ni kommit igång och gjort några ändringar: skriv kort varför strukturen ser ut som den gör, och om ni övervägde ett annat sätt att lösa det på. Detta behöver inte fyllas i redan i första commiten.
+
+# Köra programmet
+
+## Linux
+
+### Maven-lommando
+mvn compile exec:java -Dexec.mainClass="Main"
+mvn compile exec:java -Dexec.mainClass="Main" -Dexec.args="--debug"
+
+### Jar-applikation
+java -jar target/DepthDanger-1.0-SNAPSHOT.jar
+
+## Windows
+
+Se till så att du har en uppdaterad version av Java och att den pekar till rätt plats:
+$env:Path = "C:\Program Files\Microsoft\jdk-25.0.2.10-hotspot" + $env:Path
+
+Använd sedan något av dessa kommandon från projekt-roten:
+
+### Maven-kommando
+Sedan behöver man köra följande kommandon för att först sätta rätt encoding, därefter körs programmet.
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; chcp 65001; & "C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.1\plugins\maven-plugin\lib\maven3\bin\mvn.cmd" compile exec:java "-Dexec.mainClass=Main"
+
+För att skicka debug-flagga, använd istället:
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; chcp 65001; & "C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.1\plugins\maven-plugin\lib\maven3\bin\mvn.cmd" compile exec:java "-Dexec.mainClass=Main" "-Dexec.args=--debug"
+
+### Jar-applikation
+Sedan kör man programmet från projektroten genom följande kommando:
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; chcp 65001; java -jar target/DepthDanger-1.0-SNAPSHOT.jar

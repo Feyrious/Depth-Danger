@@ -1,5 +1,6 @@
 package GameEngine.UIRenderer;
 
+import Services.UIServices.Renderer.NavigationMap;
 import World.GameBoard;
 import World.Levels.LevelOne;
 import org.junit.jupiter.api.DisplayName;

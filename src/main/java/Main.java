@@ -1,23 +1,101 @@
 import GameEngine.State.GameState;
+import Services.LoggingService.ConsoleLogger;
 import Services.LoggingService.DebugService;
+import Services.TerminalService.TerminalHelper;
+import Services.UIServices.Renderer.Logger;
+import Services.UIServices.Renderer.MainMenu;
 import World.Interfaces.ILevel;
 import World.Levels.LevelOne;
+import World.Levels.LevelSelector;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     // Set desired dimensions (in characters)
-    static int _cols = 120;
-    static int _rows = 30;
+    static int _cols = 70;
+    static int _rows = 22;
 
     public static void main(String[] args) {
         DebugService.CheckIfInDebugMode(args);
         resizeConsole(_cols, _rows);
 
-        ILevel level = new LevelOne();
-        var gameState = new GameState(level);
-        gameState.RunLevel();
+        char option;
+
+        do {
+            MainMenu.RenderGameTitle();
+            MainMenu.RenderMenuOptions();
+            Logger.RenderLogs();
+
+            option = TerminalHelper.readKey();
+
+            switch (option) {
+                case 's':
+                    StartNewGame(1);
+                    break;
+                case 'l':
+                    EnterLevelCode();
+                    break;
+                case 'o':
+                    break;
+                case 'q':
+                    break;
+            }
+        } while (option != 'q');
+
+    }
+
+    private static void EnterLevelCode() {
+        boolean isEnteringCode = true;
+
+        do {
+            MainMenu.RenderGameTitle();
+            MainMenu.RenderEnterLevelCode();
+            Logger.RenderLogs();
+
+            var value = TerminalHelper.readLine();
+
+            var levelNumber = LevelSelector.GetLevelNumberByCode(value);
+
+            if(levelNumber > 0) {
+                StartNewGame(levelNumber);
+                isEnteringCode = false;
+            } else {
+                MainMenu.RenderGameTitle();
+                MainMenu.RenderTryAgainLevelCode();
+                Logger.RenderLogs();
+
+                var answer = TerminalHelper.readKey();
+
+                switch (answer) {
+                    case 'n':
+                        isEnteringCode = false;
+                        break;
+                    case 'y':
+                    default:
+                        continue;
+                }
+            }
+
+        } while (isEnteringCode);
+
+    }
+
+
+    private static void StartNewGame(int levelNumber) {
+        boolean isPlaying = true;
+        
+        do {
+            var selectedLevel = LevelSelector.GetLevelByNumber(levelNumber);
+
+            var gameState = new GameState(selectedLevel);
+
+            isPlaying = gameState.RunLevel();
+
+            levelNumber++;
+
+        } while (isPlaying);
     }
 
     public static void resizeConsole(int cols, int rows) {

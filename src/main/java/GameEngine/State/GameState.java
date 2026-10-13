@@ -42,9 +42,7 @@ public class GameState {
         this.SetPlayer(playerCharacter);
     }
 
-    public void RunLevel() {
-        Scanner scanner = new Scanner(System.in);
-
+    public boolean RunLevel() {
         // Initial render to draw the starting screen
         render();
 
@@ -66,7 +64,7 @@ public class GameState {
             }
         }
 
-        scanner.close();
+        return false;
     }
 
     /**

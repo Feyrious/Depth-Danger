@@ -16,12 +16,29 @@ public class LevelTwo extends BaseLevel {
 
     @Override
     String[] SetLevelLayout() {
-        return new String[0];
+        return new String[] {
+                "█████████████████████████████████████████",
+                "█      ⌼ █                █           ≡ █",
+                "█        █                █             █",
+                "█        ⌸                █             █",
+                "█        █                █             █",
+                "█████⌸██████████⌸█████████████⌸██████████",
+                "█          █          █                 █",
+                "█          █          █                 █",
+                "█          █          ⌸                 █",
+                "█          █          █               ⌼ █",
+                "█████████████████████████████████████████"
+        };
     }
 
     @Override
     public int GetLevelNumber() {
         return 2;
+    }
+
+    @Override
+    public String GetLevelCode() {
+        return "potions!";
     }
 
     @Override

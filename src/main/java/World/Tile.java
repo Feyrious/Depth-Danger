@@ -9,11 +9,11 @@ public class Tile {
     public String GetTileChar() {
         switch (this._tile) {
             case Wall:
-                return ConsoleFormater.COLOR_DARK_BROWN + "█" + ConsoleFormater.COLOR_RESET;
+                return ConsoleFormater.COLOR_BROWN + "█" + ConsoleFormater.COLOR_RESET;
             case Stairs:
                 return ConsoleFormater.COLOR_GREY + "≡" + ConsoleFormater.COLOR_RESET;
             case Door:
-                return ConsoleFormater.COLOR_BROWN + "⌸" + ConsoleFormater.COLOR_RESET;
+                return ConsoleFormater.COLOR_DARK_BROWN + "⌸" + ConsoleFormater.COLOR_RESET;
             case Floor:
                 return " ";
             case Chest:

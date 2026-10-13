@@ -18,21 +18,19 @@ public class LevelSelector {
     }
 
     public static int GetLevelNumberByCode(String levelCode) {
-        try {
-            return LevelList()
-                    .stream()
-                    .filter(level -> level.GetLevelCode().equalsIgnoreCase(levelCode))
-                    .findFirst()
-                    .get()
-                    .GetLevelNumber();
-        } catch (NoSuchElementException e) {
-            ConsoleLogger.LogError(ErrorLevelEnum.WARNING, "Could not get level from code: " + levelCode);
-            return 0;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            ConsoleLogger.LogError(ErrorLevelEnum.WARNING, "Could not get level from code: " + levelCode);
+        if (levelCode == null || levelCode.trim().isEmpty()) {
             return 0;
         }
 
+        return LevelList().stream()
+                .filter(level -> level.GetLevelCode() != null &&
+                        level.GetLevelCode().equalsIgnoreCase(levelCode.trim()))
+                .findFirst()
+                .map(ILevel::GetLevelNumber)
+                .orElseGet(() -> {
+                    ConsoleLogger.LogError(ErrorLevelEnum.WARNING, "Could not get level from code: " + levelCode);
+                    return 0;
+                });
     }
 
     private static ArrayList<ILevel> LevelList() {

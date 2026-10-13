@@ -4,6 +4,9 @@ import GameEngine.Movement.MovementService;
 import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Player.Character;
 import Services.LoggingService.ConsoleLogger;
+import Services.LoggingService.DebugService;
+import Services.LoggingService.Enums.InfoLevelEnum;
+import Services.LoggingService.Enums.LogLevel;
 import Services.TerminalService.TerminalHelper;
 import Services.UIServices.Renderer.*;
 import World.GameBoard;
@@ -37,9 +40,14 @@ public class GameState {
     public GameState(ILevel level) {
         ConsoleLogger.LogGameMessage("Level " + level.GetLevelNumber() + "!");
         this._board = new GameBoard(level);
-        var playerCharacter = new Character(20, 20);
-        level.SetPlayerStartPosition(playerCharacter);
-        this.SetPlayer(playerCharacter);
+
+        if (this.GetPlayer() == null)
+            this.SetPlayer(new Character(level.GetLevelNumber()));
+
+        level.SetPlayerStartPosition(this.GetPlayer());
+
+        if (level.GetLevelNumber() > this.GetPlayer().GetCurrentLevel())
+            this.GetPlayer().LevelUp();
     }
 
     public boolean RunLevel() {
@@ -52,9 +60,16 @@ public class GameState {
 
             // 1. Process player movement & choices
             boolean validTurn = processInput(choice);
+            if (DebugService.IsInDebugMode())
+                ConsoleLogger.LogInfo(InfoLevelEnum.DEBUG, "Player Current Position - X: " + String.format("%02d", this.GetPlayer().GetCurrentX()) + " Y: " + String.format("%02d", this.GetPlayer().GetCurrentY()));
 
             // 2. Only tick the game state forward if a valid action occurred
             if (validTurn && running) {
+                if (this.GetBoard().GetLevel().IsOnExitLocation(this.GetPlayer())) {
+                    ConsoleLogger.LogInfo(InfoLevelEnum.DEBUG, "You found the exit!");
+                    return true;
+                }
+
                 tick();
             }
 
@@ -96,13 +111,11 @@ public class GameState {
      * The Render Pipeline: Prints your UI stats box, map, and legend.
      */
     private void render() {
-        var character = this.GetPlayer();
-
         System.out.print("\033[H\033[2J\033[3J");
         System.out.flush();
 
-        StatMenu.RenderStats(character);
-        NavigationMap.RenderMap(_board, character, _board.GetMonsters());
+        StatMenu.RenderStats(this.GetPlayer());
+        NavigationMap.RenderMap(_board, this.GetPlayer(), _board.GetMonsters());
         GameMessages.RenderMessages();
         Legend.RenderLegend();
         Logger.RenderLogs();

@@ -14,6 +14,12 @@ public class GameBoard {
     private ConsoleLogger _logger;
     private Tile[][] _grid;
     private ArrayList<BaseMonster> _monsters;
+    private ILevel _level;
+
+
+    public ILevel GetLevel() {
+        return _level;
+    }
 
     public void SetMonsters(ArrayList<BaseMonster> monsters) {
         this._monsters = monsters;
@@ -36,6 +42,7 @@ public class GameBoard {
         _logger = new ConsoleLogger();
         this.SetTiles(level.GetLevelTiles());
         this.SetMonsters(level.GetLevelMonsters());
+        this._level = level;
     }
 
     public boolean IsWalkable(int x, int y) {

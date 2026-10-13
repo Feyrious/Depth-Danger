@@ -52,12 +52,13 @@ public class MainMenu {
 
     public static void RenderEnterLevelCode() {
         System.out.println("");
-        System.out.print("                        Enter Level Code: ");
+        System.out.println("                          Enter Level Code: ");
+        System.out.print("                                ");
     }
 
     public static void RenderTryAgainLevelCode() {
         System.out.println("");
-        System.out.println("                           Try Again?");
-        System.out.println("                          (Y)es / (N)o");
+        System.out.println("                              Try Again?");
+        System.out.println("                             (Y)es / (N)o");
     }
 }

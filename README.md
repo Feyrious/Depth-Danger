@@ -36,6 +36,15 @@ När ni kommit igång och gjort några ändringar: skriv kort varför strukturen
 
 # Köra programmet
 
+## Linux
+
+### Maven-lommando
+mvn compile exec:java -Dexec.mainClass="Main"
+mvn compile exec:java -Dexec.mainClass="Main" -Dexec.args="--debug"
+
+### Jar-applikation
+java -jar target/DepthDanger-1.0-SNAPSHOT.jar
+
 ## Windows
 
 Se till så att du har en uppdaterad version av Java och att den pekar till rätt plats:
@@ -46,6 +55,7 @@ Använd sedan något av dessa kommandon från projekt-roten:
 ### Maven-kommando
 Sedan behöver man köra följande kommandon för att först sätta rätt encoding, därefter körs programmet.
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; chcp 65001; & "C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.1\plugins\maven-plugin\lib\maven3\bin\mvn.cmd" compile exec:java "-Dexec.mainClass=Main"
+
 För att skicka debug-flagga, använd istället:
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; chcp 65001; & "C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.1\plugins\maven-plugin\lib\maven3\bin\mvn.cmd" compile exec:java "-Dexec.mainClass=Main" "-Dexec.args=--debug"
 

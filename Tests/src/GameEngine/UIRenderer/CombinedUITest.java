@@ -1,6 +1,9 @@
 package GameEngine.UIRenderer;
 
 import Models.Actors.Player.Character;
+import Services.UIServices.Renderer.Legend;
+import Services.UIServices.Renderer.NavigationMap;
+import Services.UIServices.Renderer.StatMenu;
 import World.GameBoard;
 import World.Levels.LevelOne;
 import org.junit.jupiter.api.DisplayName;

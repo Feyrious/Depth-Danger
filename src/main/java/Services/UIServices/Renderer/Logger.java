@@ -1,4 +1,4 @@
-package GameEngine.UIRenderer;
+package Services.UIServices.Renderer;
 
 import Services.LoggingService.ConsoleLogger;
 

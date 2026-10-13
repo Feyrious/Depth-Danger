@@ -1,4 +1,4 @@
-package GameEngine.CombatService;
+package Services.CombatService;
 
 import Models.Combat.Damage.Damage;
 import Services.LoggingService.ConsoleLogger;

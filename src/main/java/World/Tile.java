@@ -1,28 +1,29 @@
 package World;
 
+import Services.UIServices.ConsoleFormater;
 import World.Enums.TileTypeEnum;
 
 public class Tile {
     private TileTypeEnum _tile;
 
-    public char GetTileChar() {
+    public String GetTileChar() {
         switch (this._tile) {
             case Wall:
-                return '█';
+                return ConsoleFormater.COLOR_DARK_BROWN + "█" + ConsoleFormater.COLOR_RESET;
             case Stairs:
-                return '≡';
+                return ConsoleFormater.COLOR_GREY + "≡" + ConsoleFormater.COLOR_RESET;
             case Door:
-                return '⌸';
+                return ConsoleFormater.COLOR_BROWN + "⌸" + ConsoleFormater.COLOR_RESET;
             case Floor:
-                return ' ';
+                return " ";
             case Chest:
-                return '⌼';
+                return ConsoleFormater.COLOR_BROWN + "⌼" + ConsoleFormater.COLOR_RESET;
             case Character:
-                return '☺';
+                return ConsoleFormater.COLOR_BRIGHT_YELLOW + "☺" + ConsoleFormater.COLOR_RESET;
             case Goblin:
-                return 'ô';
+                return ConsoleFormater.COLOR_DARK_GREEN + "ô" + ConsoleFormater.COLOR_RESET;
             default:
-                return ' ';
+                return " ";
         }
     }
 

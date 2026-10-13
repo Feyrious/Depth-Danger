@@ -1,7 +1,5 @@
 import GameEngine.State.GameState;
-import Services.LoggingService.ConsoleLogger;
 import Services.LoggingService.DebugService;
-import Services.LoggingService.Enums.InfoLevelEnum;
 import World.Interfaces.ILevel;
 import World.Levels.LevelOne;
 
@@ -16,8 +14,6 @@ public class Main {
     public static void main(String[] args) {
         DebugService.CheckIfInDebugMode(args);
         resizeConsole(_cols, _rows);
-
-        boolean inDebugMode = Arrays.stream(args).anyMatch(arg -> arg.equals("--debug"));
 
         ILevel level = new LevelOne();
         var gameState = new GameState(level);

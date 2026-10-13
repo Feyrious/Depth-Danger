@@ -1,6 +1,5 @@
-package GameEngine.UIRenderer;
+package Services.UIServices.Renderer;
 import Models.Actors.Player.Character;
-import Services.LoggingService.ConsoleLogger;
 import Services.LoggingService.DebugService;
 
 public class StatMenu {

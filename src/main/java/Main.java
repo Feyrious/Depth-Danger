@@ -1,6 +1,8 @@
 import GameEngine.State.GameState;
+import Services.LoggingService.ConsoleLogger;
 import Services.LoggingService.DebugService;
 import Services.TerminalService.TerminalHelper;
+import Services.UIServices.Renderer.Logger;
 import Services.UIServices.Renderer.MainMenu;
 import World.Interfaces.ILevel;
 import World.Levels.LevelOne;
@@ -24,6 +26,7 @@ public class Main {
         do {
             MainMenu.RenderGameTitle();
             MainMenu.RenderMenuOptions();
+            Logger.RenderLogs();
 
             option = TerminalHelper.readKey();
 
@@ -49,6 +52,7 @@ public class Main {
         do {
             MainMenu.RenderGameTitle();
             MainMenu.RenderEnterLevelCode();
+            Logger.RenderLogs();
 
             var value = TerminalHelper.readLine();
 
@@ -60,6 +64,7 @@ public class Main {
             } else {
                 MainMenu.RenderGameTitle();
                 MainMenu.RenderTryAgainLevelCode();
+                Logger.RenderLogs();
 
                 var answer = TerminalHelper.readKey();
 

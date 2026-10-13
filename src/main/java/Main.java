@@ -1,5 +1,7 @@
 import GameEngine.State.GameState;
 import Services.LoggingService.DebugService;
+import Services.TerminalService.TerminalHelper;
+import Services.UIServices.Renderer.MainMenu;
 import World.Interfaces.ILevel;
 import World.Levels.LevelOne;
 
@@ -8,13 +10,37 @@ import java.util.Arrays;
 
 public class Main {
     // Set desired dimensions (in characters)
-    static int _cols = 120;
-    static int _rows = 30;
+    static int _cols = 70;
+    static int _rows = 22;
 
     public static void main(String[] args) {
         DebugService.CheckIfInDebugMode(args);
         resizeConsole(_cols, _rows);
 
+        MainMenu.RenderGameTitle();
+        MainMenu.RenderMenuOptions();
+
+        char option;
+
+        do {
+            option = TerminalHelper.readKey();
+
+            switch (option) {
+                case 's':
+                    StartNewGame();
+                    break;
+                case 'l':
+                    break;
+                case 'o':
+                    break;
+                case 'q':
+                    break;
+            }
+        } while (option != 'q');
+
+    }
+
+    private static void StartNewGame() {
         ILevel level = new LevelOne();
         var gameState = new GameState(level);
         gameState.RunLevel();

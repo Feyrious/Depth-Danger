@@ -1,11 +1,11 @@
 package GameEngine.State;
 
 import GameEngine.Movement.MovementService;
-import GameEngine.UIRenderer.*;
 import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Player.Character;
 import Services.LoggingService.ConsoleLogger;
 import Services.TerminalService.TerminalHelper;
+import Services.UIServices.Renderer.*;
 import World.GameBoard;
 import World.Interfaces.ILevel;
 

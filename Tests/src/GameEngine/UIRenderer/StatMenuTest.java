@@ -1,6 +1,7 @@
 package GameEngine.UIRenderer;
 
 import Models.Actors.Player.Character;
+import Services.UIServices.Renderer.StatMenu;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

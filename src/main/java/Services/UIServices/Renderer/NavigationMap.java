@@ -1,4 +1,4 @@
-package GameEngine.UIRenderer;
+package Services.UIServices.Renderer;
 
 import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Player.Character;

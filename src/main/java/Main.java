@@ -4,9 +4,11 @@ import Services.TerminalService.TerminalHelper;
 import Services.UIServices.Renderer.MainMenu;
 import World.Interfaces.ILevel;
 import World.Levels.LevelOne;
+import World.Levels.LevelSelector;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     // Set desired dimensions (in characters)
@@ -17,19 +19,20 @@ public class Main {
         DebugService.CheckIfInDebugMode(args);
         resizeConsole(_cols, _rows);
 
-        MainMenu.RenderGameTitle();
-        MainMenu.RenderMenuOptions();
-
         char option;
 
         do {
+            MainMenu.RenderGameTitle();
+            MainMenu.RenderMenuOptions();
+
             option = TerminalHelper.readKey();
 
             switch (option) {
                 case 's':
-                    StartNewGame();
+                    StartNewGame(1);
                     break;
                 case 'l':
+                    EnterLevelCode();
                     break;
                 case 'o':
                     break;
@@ -40,9 +43,46 @@ public class Main {
 
     }
 
-    private static void StartNewGame() {
-        ILevel level = new LevelOne();
-        var gameState = new GameState(level);
+    private static void EnterLevelCode() {
+        boolean isEnteringCode = true;
+
+        do {
+            MainMenu.RenderGameTitle();
+            MainMenu.RenderEnterLevelCode();
+
+            var value = TerminalHelper.readLine();
+
+            var levelNumber = LevelSelector.GetLevelNumberByCode(value);
+
+            if(levelNumber > 0) {
+                StartNewGame(levelNumber);
+                isEnteringCode = false;
+            } else {
+                MainMenu.RenderGameTitle();
+                MainMenu.RenderTryAgainLevelCode();
+
+                var answer = TerminalHelper.readKey();
+
+                switch (answer) {
+                    case 'n':
+                        isEnteringCode = false;
+                        break;
+                    case 'y':
+                    default:
+                        continue;
+                }
+            }
+
+        } while (isEnteringCode);
+
+    }
+
+
+    private static void StartNewGame(int levelNumber) {
+        var selectedLevel = LevelSelector.GetLevelByNumber(levelNumber);
+
+        var gameState = new GameState(selectedLevel);
+
         gameState.RunLevel();
     }
 

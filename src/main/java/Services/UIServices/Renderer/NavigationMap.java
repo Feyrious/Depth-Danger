@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class NavigationMap {
     public static void RenderMap(GameBoard level, Character character, ArrayList<BaseMonster> monsters) {
         for (int y = 0; y < level.GetHeight(); y++) {
+            System.out.print("    ");
             for (int x = 0; x < level.GetWidth(); x++) {
                 if (character != null && character.GetCurrentX() == x && character.GetCurrentY() == y) {
                     System.out.print(new Tile(TileTypeEnum.Character).GetTileChar());

@@ -49,4 +49,15 @@ public class MainMenu {
         System.out.println("                     " + nColor + "-=-" + reset + "    " + nColor + "(O)ptions" + reset + "       " + nColor + "-=-" + reset);
         System.out.println("                     " + nColor + "-=-" + reset + "    " + dangerMain + "(Q)uit" + reset + "          " + nColor + "-=-" + reset);
     }
+
+    public static void RenderEnterLevelCode() {
+        System.out.println("");
+        System.out.print("                        Enter Level Code: ");
+    }
+
+    public static void RenderTryAgainLevelCode() {
+        System.out.println("");
+        System.out.println("                           Try Again?");
+        System.out.println("                          (Y)es / (N)o");
+    }
 }

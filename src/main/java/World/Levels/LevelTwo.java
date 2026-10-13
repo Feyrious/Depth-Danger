@@ -25,6 +25,11 @@ public class LevelTwo extends BaseLevel {
     }
 
     @Override
+    public String GetLevelCode() {
+        return "potions!";
+    }
+
+    @Override
     public void SetPlayerStartPosition(Character player) {
 
     }

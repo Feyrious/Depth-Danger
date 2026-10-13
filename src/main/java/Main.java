@@ -84,11 +84,18 @@ public class Main {
 
 
     private static void StartNewGame(int levelNumber) {
-        var selectedLevel = LevelSelector.GetLevelByNumber(levelNumber);
+        boolean isPlaying = true;
+        
+        do {
+            var selectedLevel = LevelSelector.GetLevelByNumber(levelNumber);
 
-        var gameState = new GameState(selectedLevel);
+            var gameState = new GameState(selectedLevel);
 
-        gameState.RunLevel();
+            isPlaying = gameState.RunLevel();
+
+            levelNumber++;
+
+        } while (isPlaying);
     }
 
     public static void resizeConsole(int cols, int rows) {

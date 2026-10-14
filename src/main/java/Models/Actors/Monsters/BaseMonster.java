@@ -43,4 +43,10 @@ public class BaseMonster extends Entity {
         this._movementPattern = movementPattern;
         this._movementDirection = new MovementDirection();
     }
+
+    public void Attack(Character character) {
+        var rolledDamage = CalculateDamageService.RollDamage(this._attackDamage);
+        ConsoleLogger.LogGameMessage("The " + this.getClass().getSimpleName() + " attacked you for " + rolledDamage + " damage.");
+        character.TakeDamage(rolledDamage);
+    }
 }

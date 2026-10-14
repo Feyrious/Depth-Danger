@@ -17,8 +17,8 @@ public class GameState {
     private GameBoard _board;
     private static Character _character;
 
-    public void SetPlayer(Character player) {
-        this._character = player;
+    public void SetPlayer(Character character) {
+        this._character = character;
     }
 
     public Character GetCharacter() {

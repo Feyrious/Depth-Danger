@@ -38,7 +38,14 @@ public class Creature extends LevelEntity implements IMovable {
     }
 
     public void TakeDamage(int damage) {
-        this._currentHitPoints -= damage;
+        BaseArmor bestArmor = Item.GetArmorFrom(_items).stream().max(Comparator.comparing(a -> a.GetArmorValue())).get();
+
+        int reducedDamage = 0;
+
+        if (bestArmor != null)
+            reducedDamage = damage - bestArmor.GetArmorValue();
+
+        this._currentHitPoints -= reducedDamage;
 
         if (this._currentHitPoints < 0)
             this._currentHitPoints = 0;

@@ -29,7 +29,7 @@ public class Character extends Creature {
     }
 
     public Character(int characterLevel) {
-        super(characterLevel * 5, characterLevel * 5);
+        super(10 + (characterLevel * 5), 10 + (characterLevel * 5));
         this._currentX = 2;
         this._currentY = 2;
         this._level = characterLevel;

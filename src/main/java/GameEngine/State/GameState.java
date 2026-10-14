@@ -3,6 +3,8 @@ package GameEngine.State;
 import GameEngine.Movement.MovementService;
 import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Player.Character;
+import Models.Items.Item;
+import Models.Items.Treasure;
 import Services.LoggingService.ConsoleLogger;
 import Services.LoggingService.DebugService;
 import Services.LoggingService.Enums.InfoLevelEnum;
@@ -13,7 +15,7 @@ import World.Interfaces.ILevel;
 
 public class GameState {
     private GameBoard _board;
-    private Character _character;
+    private static Character _character;
 
     public void SetPlayer(Character player) {
         this._character = player;
@@ -60,6 +62,7 @@ public class GameState {
 
             // 1. Process player movement & choices
             boolean validTurn = processInput(choice);
+
             if (DebugService.IsInDebugMode())
                 ConsoleLogger.LogInfo(InfoLevelEnum.DEBUG, "Player Current Position - X: " + String.format("%02d", this.GetCharacter().GetCurrentX()) + " Y: " + String.format("%02d", this.GetCharacter().GetCurrentY()));
 
@@ -70,7 +73,9 @@ public class GameState {
                     return true;
                 }
 
-                tick();
+                checkForTreasure();
+
+                monsterTick();
             }
 
             // 3. Render the updated frame
@@ -95,15 +100,26 @@ public class GameState {
         }
     }
 
+    private void checkForTreasure() {
+        if (_board != null && _board.GetTreasureList() != null) {
+            for (Treasure treasure : _board.GetTreasureList()) {
+                if (this.GetCharacter().GetCurrentX() == treasure.GetCurrentX() && this.GetCharacter().GetCurrentY() == treasure.GetCurrentY())
+                    this.GetCharacter().Collect(treasure);
+            }
+        }
+    }
+
     /**
      * The Ticking System: Everything else in the world updates here.
      * (e.g., enemies move, hunger drops, or events process right after your move).
      */
-    private void tick() {
+    private void monsterTick() {
+        // Move monsters
         if (_board != null && _board.GetMonsters() != null) {
             for (BaseMonster monster : _board.GetMonsters()) {
                 MovementService.MoveMonster(monster, _board);
 
+                // Attack Player
                 if (monster.GetCurrentX() == GetCharacter().GetCurrentX() && monster.GetCurrentY() == GetCharacter().GetCurrentY()){
                     monster.Attack(GetCharacter());
                     if (GetCharacter().GetCurrentHitPoints() == 0)

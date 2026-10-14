@@ -13,7 +13,8 @@ import Models.Actors.Monsters.HumanoidMonster;
 import Models.Actors.Monsters.UndeadMonster;
 import Models.Actors.Player.Character;
 import World.GameBoard;
-import World.Levels.Level1;
+import World.Interfaces.ILevel;
+import World.Levels.LevelOne;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -94,7 +95,7 @@ public class MovementServiceTest {
     @Test
     @DisplayName("MovePlayer should move player in all WASD directions (lowercase and uppercase)")
     void MovePlayer_WASD_MovesPlayerCorrectly() {
-        Level1 level = new Level1();
+        ILevel level = new LevelOne();
         GameBoard board = new GameBoard(level);
         Character character = new Character(4); // starts at (2, 2)
 
@@ -122,7 +123,7 @@ public class MovementServiceTest {
     @Test
     @DisplayName("MovePlayer should move player with arrow keys (↑, ↓, ←, →)")
     void MovePlayer_ArrowKeys_MovesPlayerCorrectly() {
-        Level1 level = new Level1();
+        ILevel level = new LevelOne();
         GameBoard board = new GameBoard(level);
         Character character = new Character(3); // starts at (2, 2)
 
@@ -150,7 +151,7 @@ public class MovementServiceTest {
     @Test
     @DisplayName("MovePlayer should not move player into a wall")
     void MovePlayer_IntoWall_DoesNotChangePosition() {
-        Level1 level = new Level1();
+        ILevel level = new LevelOne();
         GameBoard board = new GameBoard(level);
         Character character = new Character(2); // starts at (2, 2)
 
@@ -174,7 +175,7 @@ public class MovementServiceTest {
     @Test
     @DisplayName("MovePlayer with invalid input should return false")
     void MovePlayer_InvalidInput_ReturnsFalse() {
-        Level1 level = new Level1();
+        ILevel level = new LevelOne();
         GameBoard board = new GameBoard(level);
         Character character = new Character(1);
 
@@ -188,7 +189,7 @@ public class MovementServiceTest {
     @Test
     @DisplayName("Pattern 1 - RandomMovementPattern: moves monster to an adjacent walkable tile")
     void RandomMovementPattern_MovesToWalkableTile() {
-        Level1 level = new Level1();
+        ILevel level = new LevelOne();
         GameBoard board = new GameBoard(level);
         BaseMonster monster = new BaseMonster(10, 10, MonsterMovementTypeEnum.Random);
 
@@ -210,7 +211,7 @@ public class MovementServiceTest {
     @Test
     @DisplayName("Pattern 2 - PatrolMovementPattern: Monster moves forward and turns when hitting a wall")
     void PatrolMovementPattern_MovesAlongWalls() {
-        Level1 level = new Level1();
+        ILevel level = new LevelOne();
         GameBoard board = new GameBoard(level);
         HumanoidMonster monster = new HumanoidMonster(10, 10); // defaults to Patrol
 
@@ -237,7 +238,7 @@ public class MovementServiceTest {
     @Test
     @DisplayName("Pattern 3 - SearchMovementPattern: Monster moves back and forth and steps vertically when hitting walls")
     void SearchMovementPattern_SweepsRoom() {
-        Level1 level = new Level1();
+        ILevel level = new LevelOne();
         GameBoard board = new GameBoard(level);
         UndeadMonster monster = new UndeadMonster(10, 10); // defaults to Search
 
@@ -275,7 +276,7 @@ public class MovementServiceTest {
     @Test
     @DisplayName("MoveMonsters moves all monsters with their respective AI patterns via MovementService")
     void MoveMonsters_MovesAllMonsters() {
-        Level1 level = new Level1();
+        ILevel level = new LevelOne();
         GameBoard board = new GameBoard(level);
 
         BaseMonster monster1 = new HumanoidMonster(10, 10); // Patrol

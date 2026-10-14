@@ -4,6 +4,7 @@ import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Monsters.Enums.MonsterMovementTypeEnum;
 import Models.Actors.Monsters.Humanoids.Goblin;
 import Models.Actors.Player.Character;
+import Models.Items.Treasure;
 import World.Tile;
 
 import java.util.ArrayList;
@@ -57,6 +58,15 @@ public class LevelOne extends BaseLevel {
     }
 
     @Override
+    public ArrayList<BaseMonster> GetMonsterList() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Treasure> GetTreasureList() {
+        return null;
+    }
+
     public ArrayList<BaseMonster> GetLevelMonsters() {
         var monsters = new ArrayList<BaseMonster>();
 

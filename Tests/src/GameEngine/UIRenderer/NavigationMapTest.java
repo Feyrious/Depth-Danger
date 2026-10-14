@@ -2,7 +2,8 @@ package GameEngine.UIRenderer;
 
 import Services.UIServices.Renderer.NavigationMap;
 import World.GameBoard;
-import World.Levels.Level1;
+import World.Interfaces.ILevel;
+import World.Levels.LevelOne;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,8 +16,8 @@ public class NavigationMapTest {
     @DisplayName("RenderMap should render LevelOne on the Board to console")
     void RenderMap_LevelOne_PrintsLevelToConsole() {
         // Arrange
-        Level1 levelOne = new Level1();
-        GameBoard game = new GameBoard(levelOne);
+        ILevel level1 = new LevelOne();
+        GameBoard game = new GameBoard(level1);
 
         // Act & Assert
         assertDoesNotThrow(() -> NavigationMap.RenderMap(game, null, null));

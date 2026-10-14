@@ -2,6 +2,7 @@ package World.Levels;
 
 import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Player.Character;
+import Models.Items.Treasure;
 import World.Tile;
 
 import java.util.ArrayList;
@@ -48,12 +49,21 @@ public class LevelThree extends BaseLevel {
     }
 
     @Override
+    public ArrayList<BaseMonster> GetMonsterList() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Treasure> GetTreasureList() {
+        return null;
+    }
+
+    @Override
     protected void SetLevelExitLocation() {
         this._exitX = 0;
         this._exitY = 0;
     }
 
-    @Override
     public ArrayList<BaseMonster> GetLevelMonsters() {
         return null;
     }

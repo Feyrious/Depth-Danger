@@ -1,10 +1,13 @@
 package Models.Combat.Damage;
 
+import Services.DiceService.Dice;
+
+import java.util.ArrayList;
+
 public class Damage {
     //region Class Properties
     private DamageTypeEnum _damageType;
-    private int _damageSize;
-    private int _damageAmount;
+    private ArrayList<Dice> _damageAmount;
     private int _staticDamage;
 
     public void SetStaticDamage(int staticDamage) {
@@ -15,20 +18,20 @@ public class Damage {
         return this._staticDamage;
     }
 
-    public void SetDamageAmount(int damageAmount) {
+    public void SetDamageAmount(ArrayList<Dice> damageAmount) {
         this._damageAmount = damageAmount;
     }
 
-    public int GetDamageAmount() {
-        return this._damageAmount;
-    }
+    public int RollForDamage() {
+        int damageValue = 0;
 
-    public void SetDamageSize(int damageSize) {
-        this._damageSize = damageSize;
-    }
+        for (Dice dice : this._damageAmount) {
+            damageValue += dice.Roll();
+        }
 
-    public int GetDamageSize() {
-        return this._damageSize;
+        damageValue += _staticDamage;
+
+        return damageValue;
     }
 
     public void SetDamageType(DamageTypeEnum damageType) {
@@ -41,11 +44,14 @@ public class Damage {
     //endregion
 
     //region Class Constructors
-    public Damage(int damageAmount, int damageSize, int staticDamage, DamageTypeEnum damageType) {
-        this._damageAmount = damageAmount;
-        this._damageSize = damageSize;
+    public Damage(Dice damageAmount, int staticDamage, DamageTypeEnum damageType) {
+        this._damageAmount.add(damageAmount);
         this._damageType = damageType;
-        this._staticDamage = staticDamage;
+    }
+
+    public Damage(ArrayList<Dice> damageAmount, int staticDamage, DamageTypeEnum damageType) {
+        this._damageAmount = damageAmount;
+        this._damageType = damageType;
     }
     //endregion
 

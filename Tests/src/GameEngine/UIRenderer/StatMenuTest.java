@@ -15,7 +15,7 @@ public class StatMenuTest {
         // Arrange
         Character player = new Character(1);
         player.LevelUp();
-        player.SetCoins(20);
+        player.CollectCoins(20);
 
         // Act & Assert
         assertDoesNotThrow(() -> StatMenu.RenderStats(player));

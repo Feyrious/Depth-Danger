@@ -1,6 +1,7 @@
 package World;
 
 import Models.Actors.Monsters.BaseMonster;
+import Models.Items.Treasure;
 import Services.LoggingService.ConsoleLogger;
 import Services.LoggingService.Enums.ErrorLevelEnum;
 import World.Enums.TileTypeEnum;
@@ -14,6 +15,7 @@ public class GameBoard {
     private ConsoleLogger _logger;
     private Tile[][] _grid;
     private ArrayList<BaseMonster> _monsters;
+    private ArrayList<Treasure> _treasures;
     private ILevel _level;
 
 
@@ -29,6 +31,10 @@ public class GameBoard {
         return this._monsters;
     }
 
+    public ArrayList<Treasure> GetTreasureList() {
+        return this._treasures;
+    }
+
     private void SetTiles(Tile[][] tiles) {
         this._grid = tiles;
     }
@@ -41,8 +47,9 @@ public class GameBoard {
     public GameBoard(ILevel level) {
         _logger = new ConsoleLogger();
         this.SetTiles(level.GetLevelTiles());
-        this.SetMonsters(level.GetLevelMonsters());
+        this.SetMonsters(level.GetMonsterList());
         this._level = level;
+        this._treasures = level.GetTreasureList();
     }
 
     public boolean IsWalkable(int x, int y) {

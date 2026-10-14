@@ -2,24 +2,9 @@ package Models.Actors;
 
 import Models.Actors.Interfaces.IMovable;
 
-public class Entity implements IMovable {
-
-    //region Properties
-
+public class Creature extends LevelEntity implements IMovable {
     protected int _currentHitPoints;
     protected int _maxHitPoints;
-    protected int _currentX;
-    protected int _currentY;
-
-    @Override
-    public int GetCurrentX() {
-        return this._currentX;
-    }
-
-    @Override
-    public int GetCurrentY() {
-        return this._currentY;
-    }
 
     public int GetCurrentHitPoints() {
         return this._currentHitPoints;
@@ -31,7 +16,7 @@ public class Entity implements IMovable {
     //endregion
 
 
-    public Entity(int currentHitPoints, int maxHitPoints) {
+    public Creature(int currentHitPoints, int maxHitPoints) {
         this._currentHitPoints = currentHitPoints;
         this._maxHitPoints = maxHitPoints;
     }
@@ -41,11 +26,6 @@ public class Entity implements IMovable {
 
         if (this._currentHitPoints < 0)
             this._currentHitPoints = 0;
-    }
-
-    public void SetStartPosition(int x, int y) {
-        this._currentX = x;
-        this._currentY = y;
     }
 
     @Override
@@ -67,5 +47,4 @@ public class Entity implements IMovable {
     public void MoveRight() {
         this._currentX++;
     }
-
 }

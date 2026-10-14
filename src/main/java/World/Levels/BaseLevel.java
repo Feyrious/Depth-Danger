@@ -47,7 +47,7 @@ public abstract class BaseLevel implements ILevel {
     }
 
     @Override
-    public abstract ArrayList<BaseMonster> GetLevelMonsters();
+    public abstract ArrayList<BaseMonster> GetMonsterList();
 
     protected void InitMap() {
         for (int y = 0; y < GetLevelHeight(); y++) {

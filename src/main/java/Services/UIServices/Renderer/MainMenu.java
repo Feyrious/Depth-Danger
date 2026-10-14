@@ -53,7 +53,7 @@ public class MainMenu {
     public static void RenderEnterLevelCode() {
         System.out.println("");
         System.out.println("                          Enter Level Code: ");
-        System.out.print("                                ");
+        System.out.print("                              ");
     }
 
     public static void RenderTryAgainLevelCode() {

@@ -1,26 +1,24 @@
 package Models.Items.Potions;
 
-public class HealingPotion extends BasePotion {
-    private int _healingSize;
-    private int _healingAmount;
+import Services.DiceService.Dice;
 
-    public void SetHealingAmount(int healingAmount) {
+public class HealingPotion extends BasePotion {
+
+    private Dice _healingAmount;
+
+    private int _staticHealingAmount;
+
+    private void SetHealingAmount(Dice healingAmount) {
         this._healingAmount = healingAmount;
     }
 
     public int GetHealingAmount() {
-        return this._healingAmount;
+        return _healingAmount.Roll() + _staticHealingAmount;
     }
 
-    public void SetHealingSize(int healingSize) {
-        this._healingSize = healingSize;
-    }
-
-    public int GetHealingSize() {
-        return this._healingSize;
-    }
-
-    public HealingPotion(int _amount, String _name) {
-        super(_amount, _name);
+    public HealingPotion(Dice healingAmount, int staticHealingAmount, String name) {
+        super(name);
+        SetHealingAmount(healingAmount);
+        this._staticHealingAmount = staticHealingAmount;
     }
 }

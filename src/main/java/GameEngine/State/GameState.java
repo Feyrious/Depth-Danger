@@ -53,6 +53,9 @@ public class GameState {
 
         // The input-driven game loop
         while (running) {
+            if (!IsCharacterAlive())
+                return false;
+
             char choice = TerminalHelper.readKey();
 
             // 1. Process player movement & choices
@@ -74,9 +77,22 @@ public class GameState {
             if (running) {
                 render();
             }
+
+            // 4. Check if the game continues
+            if (!IsCharacterAlive())
+                return false;
         }
 
         return false;
+    }
+
+    private boolean IsCharacterAlive() {
+        if (GetCharacter().GetCurrentHitPoints() == 0) {
+            TerminalHelper.readKey();
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -87,6 +103,12 @@ public class GameState {
         if (_board != null && _board.GetMonsters() != null) {
             for (BaseMonster monster : _board.GetMonsters()) {
                 MovementService.MoveMonster(monster, _board);
+
+                if (monster.GetCurrentX() == GetCharacter().GetCurrentX() && monster.GetCurrentY() == GetCharacter().GetCurrentY()){
+                    monster.Attack(GetCharacter());
+                    if (GetCharacter().GetCurrentHitPoints() == 0)
+                        ConsoleLogger.LogGameMessage("Game Over!");
+                }
             }
         }
     }

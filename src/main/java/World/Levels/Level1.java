@@ -85,16 +85,16 @@ public class Level1 extends BaseLevel {
         var treasure1 = new Treasure(10, null);
         treasure1.SetStartPosition(3, 1);
 
-        var treasure2 = new Treasure(15, null);
+        var treasure2 = new Treasure(15, (Item) null);
         treasure2.SetStartPosition(3, 4);
 
-        var treasure3 = new Treasure(20, null);
+        var treasure3 = new Treasure(20, (Item) null);
         treasure3.SetStartPosition(16, 7);
 
-        var treasure4 = new Treasure(10, null);
+        var treasure4 = new Treasure(10, (Item) null);
         treasure4.SetStartPosition(29, 1);
 
-        var treasure5 = new Treasure(30, null);
+        var treasure5 = new Treasure(30, (Item) null);
         treasure5.SetStartPosition(30, 6);
 
         var treasure6 = new Treasure(5, null);

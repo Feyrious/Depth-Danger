@@ -14,9 +14,19 @@ public class Treasure extends LevelEntity {
         this.SetItems(_items);
     }
 
+    public Treasure(int _coins, Item _item) {
+        this.SetCoins(_coins);
+        this.AddItems(_item);
+    }
+
     private void SetItems(ArrayList<Item> items) {
         if (items != null)
             this._items.addAll(items);
+    }
+
+    private void AddItems(Item item) {
+        if (item != null)
+            this._items.add(item);
     }
 
     public ArrayList<Item> CollectItems() {

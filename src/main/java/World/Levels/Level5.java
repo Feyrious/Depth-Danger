@@ -4,6 +4,7 @@ import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Monsters.Enums.MonsterMovementTypeEnum;
 import Models.Actors.Monsters.Humanoids.Goblin;
 import Models.Actors.Player.Character;
+import Models.Items.Item;
 import Models.Items.Treasure;
 import World.Tile;
 
@@ -74,7 +75,7 @@ public class Level5 extends BaseLevel {
 
     @Override
     public ArrayList<Treasure> GetTreasureList() {
-        var treasure1 = new Treasure(10, null);
+        var treasure1 = new Treasure(10, (Item) null);
         treasure1.SetStartPosition(3, 3);
 
         var treasure = new ArrayList<Treasure>();

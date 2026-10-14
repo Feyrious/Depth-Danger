@@ -1,10 +1,26 @@
 package Models.Actors;
 
 import Models.Actors.Interfaces.IMovable;
+import Models.Items.Armor.BaseArmor;
+import Models.Items.Item;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Creature extends LevelEntity implements IMovable {
     protected int _currentHitPoints;
     protected int _maxHitPoints;
+
+    private ArrayList<Item> _items;
+
+    public void CollectItems(ArrayList<Item> items) {
+        if (items != null)
+            this._items.addAll(items);
+    }
+
+    public ArrayList<Item> GetItems() {
+        return this._items;
+    }
 
     public int GetCurrentHitPoints() {
         return this._currentHitPoints;

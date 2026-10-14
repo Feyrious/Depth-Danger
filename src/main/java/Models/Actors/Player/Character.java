@@ -12,17 +12,6 @@ public class Character extends Creature {
     private int _level;
     private int _coins;
 
-    private ArrayList<Item> _items;
-
-    public void CollectItems(ArrayList<Item> items) {
-        if (items != null)
-            this._items.addAll(items);
-    }
-
-    public ArrayList<Item> GetItems() {
-        return this._items;
-    }
-
     public void CollectCoins(int coins) {
         this._coins += coins;
     }

@@ -3,6 +3,7 @@ package Models.Actors.Player;
 import Models.Actors.Creature;
 import Models.Actors.LevelEntity;
 import Models.Items.Item;
+import Models.Items.Potions.HealingPotion;
 import Models.Items.Treasure;
 import Services.LoggingService.ConsoleLogger;
 
@@ -51,9 +52,20 @@ public class Character extends Creature {
         }
 
         if (items.size() > 0) {
-            CollectItems(items);
             for (Item item : items) {
-                ConsoleLogger.LogGameMessage("You picked up a " + item.GetName() + "!" );
+                if (item instanceof HealingPotion) {
+                    var healthPotion = (HealingPotion)item;
+                    var healingValue = healthPotion.GetHealingAmount();
+                    this._currentHitPoints += healingValue;
+
+                    if (this._currentHitPoints > this._maxHitPoints)
+                        this._currentHitPoints = this._maxHitPoints;
+
+                    ConsoleLogger.LogGameMessage("You picked up a " + item.GetName() + "! - You regained " + healingValue + "HP!" );
+                } else {
+                    CollectItems(item);
+                    ConsoleLogger.LogGameMessage("You picked up a " + item.GetName() + "!" );
+                }
             }
         }
     }

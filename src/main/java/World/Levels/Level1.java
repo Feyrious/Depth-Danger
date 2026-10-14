@@ -4,11 +4,17 @@ import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Monsters.Enums.MonsterMovementTypeEnum;
 import Models.Actors.Monsters.Humanoids.Goblin;
 import Models.Actors.Player.Character;
+import Models.Items.Armor.BaseArmor;
+import Models.Items.Armor.LeatherArmor;
+import Models.Items.Item;
+import Models.Items.Potions.HealingPotion;
 import Models.Items.Treasure;
+import Services.DiceService.Dice;
 import World.Tile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Level1 extends BaseLevel {
 
@@ -98,7 +104,8 @@ public class Level1 extends BaseLevel {
         var treasure5 = new Treasure(30, (Item) null);
         treasure5.SetStartPosition(30, 6);
 
-        var treasure6 = new Treasure(5, null);
+        var potion = new HealingPotion(new Dice(4), 2, "Lesser Healing Potion");
+        var treasure6 = new Treasure(5, potion);
         treasure6.SetStartPosition(56, 4);
 
         var treasure = new ArrayList<Treasure>();

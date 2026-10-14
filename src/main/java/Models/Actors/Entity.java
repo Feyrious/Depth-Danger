@@ -21,8 +21,12 @@ public class Entity implements IMovable {
         return this._currentY;
     }
 
-    public int GetHitPoints() {
+    public int GetCurrentHitPoints() {
         return this._currentHitPoints;
+    }
+
+    public int GetMaxHitPoints() {
+        return this._maxHitPoints;
     }
     //endregion
 
@@ -63,4 +67,5 @@ public class Entity implements IMovable {
     public void MoveRight() {
         this._currentX++;
     }
+
 }

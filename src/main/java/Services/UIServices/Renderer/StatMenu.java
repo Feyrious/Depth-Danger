@@ -5,7 +5,7 @@ import Services.LoggingService.DebugService;
 public class StatMenu {
 
     public static void RenderStats(Character character) {
-        String healthMessage = "HP: " + String.format("%03d", character.GetCurrentHealth()) + "/" + String.format("%03d", character.GetMaxHealth()) + "    -    ";
+        String healthMessage = "HP: " + String.format("%03d", character.GetCurrentHitPoints()) + "/" + String.format("%03d", character.GetMaxHitPoints()) + "    -    ";
         String coinsMessage = "Coins: " + String.format("%04d", character.GetCoins()) + "    -    ";
         String levelMessage = "Level: " + String.format("%02d", character.GetCurrentLevel());
         String message = healthMessage + coinsMessage + levelMessage;

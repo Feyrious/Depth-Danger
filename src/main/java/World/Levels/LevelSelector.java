@@ -6,7 +6,6 @@ import World.Interfaces.ILevel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class LevelSelector {
     public static ILevel GetLevelByNumber(int levelNumber) {
@@ -35,9 +34,12 @@ public class LevelSelector {
 
     private static ArrayList<ILevel> LevelList() {
         return new ArrayList<ILevel>(List.of(
-                new LevelOne(),
-                new LevelTwo(),
-                new LevelThree()
+                new Level1(),
+                new Level2(),
+                new Level3(),
+                new Level4(),
+                new Level5(),
+                new Level6()
             )
         );
     }

@@ -82,7 +82,8 @@ public class Level1 extends BaseLevel {
 
     @Override
     public ArrayList<Treasure> GetTreasureList() {
-        var treasure1 = new Treasure(10, null);
+        var armor = new LeatherArmor("Simple Leather Armor");
+        var treasure1 = new Treasure(10, armor);
         treasure1.SetStartPosition(3, 1);
 
         var treasure2 = new Treasure(15, (Item) null);

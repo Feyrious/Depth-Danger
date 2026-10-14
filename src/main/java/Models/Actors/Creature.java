@@ -11,11 +11,11 @@ public class Creature extends LevelEntity implements IMovable {
     protected int _currentHitPoints;
     protected int _maxHitPoints;
 
-    private ArrayList<Item> _items;
+    private ArrayList<Item> _items = new ArrayList<>();
 
-    public void CollectItems(ArrayList<Item> items) {
-        if (items != null)
-            this._items.addAll(items);
+    public void CollectItems(Item item) {
+        if (item != null)
+            this._items.add(item);
     }
 
     public ArrayList<Item> GetItems() {
@@ -38,14 +38,19 @@ public class Creature extends LevelEntity implements IMovable {
     }
 
     public void TakeDamage(int damage) {
-        BaseArmor bestArmor = Item.GetArmorFrom(_items).stream().max(Comparator.comparing(a -> a.GetArmorValue())).get();
+        var armorList = Item.GetItemsFrom(_items, BaseArmor.class);
+        var bestArmor = (armorList == null || armorList.isEmpty()) ? null : armorList.stream()
+                .max(Comparator.comparing(a -> a.GetArmorValue()))
+                .orElse(null);
 
         int reducedDamage = 0;
 
-        if (bestArmor != null)
+        if (bestArmor != null) {
             reducedDamage = damage - bestArmor.GetArmorValue();
-
-        this._currentHitPoints -= reducedDamage;
+            this._currentHitPoints -= reducedDamage;
+        } else {
+            this._currentHitPoints -= damage;
+        }
 
         if (this._currentHitPoints < 0)
             this._currentHitPoints = 0;

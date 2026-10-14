@@ -13,7 +13,7 @@ public class BaseArmor extends Item {
         return this._armorValue;
     }
 
-    public BaseArmor(int _amount, String _name) {
-        super(_amount, _name);
+    public BaseArmor(String name) {
+        super(name);
     }
 }

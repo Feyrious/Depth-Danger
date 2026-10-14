@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Damage {
     //region Class Properties
     private DamageTypeEnum _damageType;
-    private ArrayList<Dice> _damageAmount;
+    private ArrayList<Dice> _damageAmount = new ArrayList<Dice>();
     private int _staticDamage;
 
     public void SetStaticDamage(int staticDamage) {

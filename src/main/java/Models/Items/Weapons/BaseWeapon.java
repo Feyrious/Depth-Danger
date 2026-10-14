@@ -7,8 +7,8 @@ abstract public class BaseWeapon extends Item {
     //region Class Properties
     private Damage _weaponDamage;
 
-    public BaseWeapon(int _amount, String _name) {
-        super(_amount, _name);
+    public BaseWeapon(String name) {
+        super(name);
     }
 
     public void SetWeaponDamage(Damage weaponDamage) {

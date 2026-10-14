@@ -11,6 +11,9 @@ public class GameOptions {
 
         do {
             var selectedLevel = LevelSelector.GetLevelByNumber(levelNumber);
+            if (selectedLevel == null)
+                break;
+
             var gameState = new GameState(selectedLevel);
 
             isPlaying = gameState.RunLevel();

@@ -13,7 +13,7 @@ public class LevelSelector {
                 .stream()
                 .filter(level -> level.GetLevelNumber() == levelNumber)
                 .findFirst()
-                .get();
+                .orElse(null);
     }
 
     public static int GetLevelNumberByCode(String levelCode) {

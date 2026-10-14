@@ -52,13 +52,13 @@ public class Level6 extends BaseLevel {
 
     @Override
     public void SetPlayerStartPosition(Character player) {
-        player.SetStartPosition(1,1);
+        player.SetStartPosition(60,9);
     }
 
     @Override
     protected void SetLevelExitLocation() {
-        this._exitX = 0;
-        this._exitY = 0;
+        this._exitX = 2;
+        this._exitY = 7;
     }
 
     @Override

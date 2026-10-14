@@ -33,9 +33,9 @@ public class Level4 extends BaseLevel {
         /* Y4  */ "█          █           █           █             █           █",
         /* Y5  */ "█        ⌼ █     ⌼     █           ⌸             █         ⌼ █",
         /* Y6  */ "████⌸███████████████████████⌸█████████████⌸█████████⌸█████████",
-        /* Y7  */ "█ ⌼        █           █         ⌼ █             █           █",
+        /* Y7  */ "█          █           █         ⌼ █             █           █",
         /* Y8  */ "█          ⌸           ⌸           █             █           █",
-        /* Y9  */ "█  ⌼       █           █         ⌼ █      ⌼      █         ≡ █",
+        /* Y9  */ "█          █           █         ⌼ █      ⌼      █         ≡ █",
         /* Y10 */ "██████████████████████████████████████████████████████████████"
         };
     }
@@ -52,13 +52,13 @@ public class Level4 extends BaseLevel {
 
     @Override
     public void SetPlayerStartPosition(Character player) {
-        player.SetStartPosition(1,1);
+        player.SetStartPosition(2,8);
     }
 
     @Override
     protected void SetLevelExitLocation() {
-        this._exitX = 0;
-        this._exitY = 0;
+        this._exitX = 59;
+        this._exitY = 9;
     }
 
     @Override

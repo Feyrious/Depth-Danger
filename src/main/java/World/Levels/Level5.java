@@ -32,10 +32,10 @@ public class Level5 extends BaseLevel {
         /* Y3  */ "█ █      █  ⌸                                  ⌸  █        █ █",
         /* Y4  */ "█ ███████████                                  █████████████ █",
         /* Y5  */ "█                                                            █",
-        /* Y6  */ "█ ███████████    ███████████    ███████████    █████████████ █",
-        /* Y7  */ "█ █      █  ⌸    █      █  ⌸    ⌸  █      █    ⌸  █        █ █",
-        /* Y8  */ "█ █ ⌼    ⌸  █    █ ⌼    ⌸  █    █  ⌸    ⌼ █    █  ⌸      ⌼ █ █",
-        /* Y9  */ "█ ███████████    ███████████    ███████████    █████████████ █",
+        /* Y6  */ "█ ███████████    ███████████    ████████████████████████████ █",
+        /* Y7  */ "█ █      █  ⌸    █      █  ⌸    ⌸  █      ⌸    █  ⌸        █ █",
+        /* Y8  */ "█ █ ⌼    ⌸  █    █ ⌼    ⌸  █    █  ⌸    ⌼ █    ⌸  █      ≡ █ █",
+        /* Y9  */ "█ ███████████    ███████████    ████████████████████████████ █",
         /* Y10 */ "██████████████████████████████████████████████████████████████"
         };
     }
@@ -52,13 +52,13 @@ public class Level5 extends BaseLevel {
 
     @Override
     public void SetPlayerStartPosition(Character player) {
-        player.SetStartPosition(1,1);
+        player.SetStartPosition(30,1);
     }
 
     @Override
     protected void SetLevelExitLocation() {
-        this._exitX = 0;
-        this._exitY = 0;
+        this._exitX = 57;
+        this._exitY = 8;
     }
 
     @Override

@@ -1,16 +1,33 @@
 package Models.Actors.Player;
 
-import Models.Actors.Entity;
+import Models.Actors.Creature;
+import Models.Actors.LevelEntity;
+import Models.Items.Item;
+import Models.Items.Treasure;
+import Services.LoggingService.ConsoleLogger;
 
-public class Character extends Entity {
+import java.util.ArrayList;
+
+public class Character extends Creature {
     private int _level;
     private int _coins;
 
-    public void SetCoins(int coins) {
-        this._coins = coins;
+    private ArrayList<Item> _items;
+
+    public void CollectItems(ArrayList<Item> items) {
+        if (items != null)
+            this._items.addAll(items);
     }
 
-    public int GetCoins() {
+    public ArrayList<Item> GetItems() {
+        return this._items;
+    }
+
+    public void CollectCoins(int coins) {
+        this._coins += coins;
+    }
+
+    public int CountCoins() {
         return this._coins;
     }
 
@@ -32,5 +49,23 @@ public class Character extends Entity {
     public void LevelUp() {
         this._level++;
         super._maxHitPoints += 5;
+        super._currentHitPoints += 5;
+    }
+
+    public void Collect(Treasure treasure) {
+        var coins = treasure.CollectCoins();
+        var items = treasure.CollectItems();
+
+        if (coins > 0) {
+            CollectCoins(coins);
+            ConsoleLogger.LogGameMessage("You picked up " + coins + " Coins!" );
+        }
+
+        if (items.size() > 0) {
+            CollectItems(items);
+            for (Item item : items) {
+                ConsoleLogger.LogGameMessage("You picked up a " + item.GetName() + "!" );
+            }
+        }
     }
 }

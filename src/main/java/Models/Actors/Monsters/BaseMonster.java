@@ -1,7 +1,8 @@
 package Models.Actors.Monsters;
 
 import GameEngine.Movement.MovementDirection;
-import Models.Actors.Entity;
+import Models.Actors.Creature;
+import Models.Actors.LevelEntity;
 import Models.Actors.Monsters.Enums.MonsterMovementTypeEnum;
 import Models.Actors.Player.Character;
 import Models.Combat.Damage.Damage;
@@ -9,7 +10,7 @@ import Models.Combat.Damage.DamageTypeEnum;
 import Services.CombatService.CalculateDamageService;
 import Services.LoggingService.ConsoleLogger;
 
-public class BaseMonster extends Entity {
+public class BaseMonster extends Creature {
     protected MonsterMovementTypeEnum _movementPattern;
     protected MovementDirection _movementDirection;
 

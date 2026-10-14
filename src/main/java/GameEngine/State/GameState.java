@@ -37,8 +37,8 @@ public class GameState {
     private boolean running = true;
 
     public GameState(ILevel level) {
-        ConsoleLogger.LogGameMessage("Level " + level.GetLevelNumber() + "!");
-        this._board = new GameBoard(level);
+        ConsoleLogger.LogGameMessage("Level " + level.GetLevelNumber() + "! - Level Code: " + level.GetLevelCode());
+        this.SetBoard(new GameBoard(level));
 
         if (this.GetCharacter() == null)
             this.SetPlayer(new Character(level.GetLevelNumber()));

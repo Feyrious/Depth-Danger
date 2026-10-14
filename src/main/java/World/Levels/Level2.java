@@ -22,7 +22,7 @@ public class Level2 extends BaseLevel {
     @Override
     String[] SetLevelLayout() {
         return new String[] {
-                // X-coordinates
+                  // X-coordinates
                   //1   5    10   15   20   25   30   35   40   45   50   55   60
                   //↓   ↓    ↓    ↓    ↓    ↓    ↓    ↓    ↓    ↓    ↓    ↓    ↓
         /* Y0  */ "██████████████████████████████████████████████████████████████",

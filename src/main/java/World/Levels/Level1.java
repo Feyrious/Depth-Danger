@@ -4,11 +4,17 @@ import Models.Actors.Monsters.BaseMonster;
 import Models.Actors.Monsters.Enums.MonsterMovementTypeEnum;
 import Models.Actors.Monsters.Humanoids.Goblin;
 import Models.Actors.Player.Character;
+import Models.Items.Armor.BaseArmor;
+import Models.Items.Armor.LeatherArmor;
+import Models.Items.Item;
+import Models.Items.Potions.HealingPotion;
 import Models.Items.Treasure;
+import Services.DiceService.Dice;
 import World.Tile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Level1 extends BaseLevel {
 
@@ -82,22 +88,24 @@ public class Level1 extends BaseLevel {
 
     @Override
     public ArrayList<Treasure> GetTreasureList() {
-        var treasure1 = new Treasure(10, null);
+        var armor = new LeatherArmor("Simple Leather Armor");
+        var treasure1 = new Treasure(10, armor);
         treasure1.SetStartPosition(3, 1);
 
-        var treasure2 = new Treasure(15, null);
+        var treasure2 = new Treasure(15, (Item) null);
         treasure2.SetStartPosition(3, 4);
 
-        var treasure3 = new Treasure(20, null);
+        var treasure3 = new Treasure(20, (Item) null);
         treasure3.SetStartPosition(16, 7);
 
-        var treasure4 = new Treasure(10, null);
+        var treasure4 = new Treasure(10, (Item) null);
         treasure4.SetStartPosition(29, 1);
 
-        var treasure5 = new Treasure(30, null);
+        var treasure5 = new Treasure(30, (Item) null);
         treasure5.SetStartPosition(30, 6);
 
-        var treasure6 = new Treasure(5, null);
+        var potion = new HealingPotion(new Dice(4), 2, "Lesser Healing Potion");
+        var treasure6 = new Treasure(5, potion);
         treasure6.SetStartPosition(56, 4);
 
         var treasure = new ArrayList<Treasure>();

@@ -5,6 +5,7 @@ import Services.UIServices.Renderer.Legend;
 import Services.UIServices.Renderer.NavigationMap;
 import Services.UIServices.Renderer.StatMenu;
 import World.GameBoard;
+import World.Interfaces.ILevel;
 import World.Levels.Level1;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,8 +23,8 @@ public class CombinedUITest {
         player.LevelUp();
         player.LevelUp();
         player.CollectCoins(20);
-        Level1 levelOne = new Level1();
-        GameBoard game = new GameBoard(levelOne);
+        ILevel level1 = new Level1();
+        GameBoard game = new GameBoard(level1);
 
         // Act & Assert
         assertDoesNotThrow(() -> StatMenu.RenderStats(player));
